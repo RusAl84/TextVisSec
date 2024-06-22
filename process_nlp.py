@@ -133,8 +133,8 @@ def gen_data():
     content1=""
     content2=""
     for item in data:
-        content1+=f"\n {item['risk']} {item['desc']}"
-        content2+=f"\n {item['bdu']} {item['bdu']}"
+        content1+=f"{item['risk']}\t{item['desc']}\n"
+        content2+=f"{item['bdu']}\t{item['bdu']} \n"
     with open("risk.txt", "w", encoding="UTF8") as file:
         file.write(content1)
     with open("bdu.txt", "w", encoding="UTF8") as file:
