@@ -64,19 +64,28 @@ def remove_all(data):
     return data
 
 
-def get_normal_form_mas(words):
-    import pymorphy2
-    morph = pymorphy2.MorphAnalyzer()
+def remove_all_mas(data):
+    new_data = []
+    for item in data:
+        new_data.append(remove_all(item))
+    return new_data
+
+def get_normal_form_mas(lines):
+    import pymorphy3
+    morph = pymorphy3.MorphAnalyzer()
     result = []
-    for word in words.split():
-        p = morph.parse(word)[0]
-        result.append(p.normal_form)
+    for line in lines:
+        l=""
+        for word in line.split():
+            p = morph.parse(word)[0]
+            l+=" "+(p.normal_form)
+        result.append(l)
     return result
 
 
 def get_normal_form(words):
-    import pymorphy2
-    morph = pymorphy2.MorphAnalyzer()
+    import pymorphy3
+    morph = pymorphy3.MorphAnalyzer()
     p = morph.parse(words)[0]
     return p.normal_form
 
@@ -130,15 +139,15 @@ def calc_intersection_text(text1, text2):
 
 def gen_data():
     data=load_data()
-    content1=""
-    content2=""
+    risk=""
+    bdu=""
     for item in data:
-        content1+=f"{item['risk']}\t{item['desc']}\n"
-        content2+=f"{item['bdu']}\t{item['bdu']} \n"
+        risk+=f"{item['risk']}\t{item['desc']}\n"
+        bdu+=f"{item['bdu']}\t{item['desc']} \n"
     with open("risk.txt", "w", encoding="UTF8") as file:
-        file.write(content1)
+        file.write(risk)
     with open("bdu.txt", "w", encoding="UTF8") as file:
-        file.write(content1)
+        file.write(bdu)
 
 
 if __name__ == '__main__':

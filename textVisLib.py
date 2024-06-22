@@ -36,12 +36,12 @@ def TokenFrequencyDistribution(y, text):
 
     freq_dist_viz.show();
 
-    from yellowbrick.text import freqdist
+    # from yellowbrick.text import freqdist
 
-    fig = plt.figure(figsize=(15,7))
-    ax = fig.add_subplot(111)
+    # fig = plt.figure(figsize=(15,7))
+    # ax = fig.add_subplot(111)
 
-    freqdist(vec.get_feature_names_out(), transformed_data, orient="v", color="lime", ax=ax);
+    # freqdist(vec.get_feature_names_out(), transformed_data, orient="v", color="lime", ax=ax);
 
 #t-SNE Corpus Visualization
 def tSNEV_CV_SVD(y, text):
@@ -54,8 +54,7 @@ def tSNEV_CV_SVD(y, text):
     tsne_viz = TSNEVisualizer(ax=ax,
                         decompose="svd",
                         decompose_by=45,
-                        colors=["tomato", "lime","dodgerblue", "fuchsia"],
-                        random_state=123)
+                        random_state=144)
     tsne_viz.fit(transformed_text.toarray(), y)
     tsne_viz.show();
 
@@ -70,7 +69,7 @@ def tSNEV_CV_PCA(y, text):
                         decompose="pca",
                         decompose_by=45,
                         colors=["tomato", "lime","dodgerblue", "fuchsia"],
-                        random_state=123)
+                        random_state=45)
 
     tsne_viz.fit(transformed_text.toarray(), y)
     tsne_viz.show();
@@ -83,7 +82,23 @@ def tSNEV_CV_PCA2(y, text):
     fig = plt.figure(figsize=(7,7))
     ax = fig.add_subplot(111)
 
-    tsne(transformed_text.toarray(), y, ax=ax, decompose="pca", decompose_by=45, colors=["tomato", "lime","dodgerblue", "fuchsia"]);
+    tsne(transformed_text.toarray(), 
+        y, ax=ax, 
+        decompose="pca", decompose_by=45);
+    
+    
+    
+def umap_CV(y, text):
+    from yellowbrick.text import UMAPVisualizer
+    vec = TfidfVectorizer(stop_words="english")
+    transformed_text = vec.fit_transform(text)
+
+    fig = plt.figure(figsize=(8,8))
+    ax = fig.add_subplot(111)
+
+    umap = UMAPVisualizer(ax=ax, colors=["lime", "tomato"])
+    umap.fit(transformed_text, y)
+    umap.show();
 
 if __name__ == '__main__':
     # filename='risk.txt'
@@ -95,7 +110,11 @@ if __name__ == '__main__':
     
     filename='bdu.txt'
     (y, text) = load_data(filename)
+    # import process_nlp
+    # text = process_nlp.remove_all_mas(text)
+    # text = process_nlp.get_normal_form_mas(text)
     # TokenFrequencyDistribution(y, text)
-    tSNEV_CV_SVD(y, text)
+    # tSNEV_CV_SVD(y, text)
     # tSNEV_CV_PCA(y, text)
     # tSNEV_CV_PCA2(y, text)
+    umap_CV(y, text)
