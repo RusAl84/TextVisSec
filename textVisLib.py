@@ -7,8 +7,8 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from yellowbrick.text import TSNEVisualizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from yellowbrick.text.tsne import tsne
-
-
+import matplotlib
+    
 def load_data(filename='risk.txt'):
     # filename='./smsspamcollection/SMSSpamCollection'
     with open(filename, encoding="UTF-8") as f:
@@ -54,7 +54,7 @@ def tSNEV_CV_SVD(y, text):
     tsne_viz = TSNEVisualizer(ax=ax,
                         decompose="svd",
                         decompose_by=45,
-                        random_state=144)
+                        random_state=144, colors=matplotlib.colors.CSS4_COLORS)
     tsne_viz.fit(transformed_text.toarray(), y)
     tsne_viz.show();
 
@@ -68,7 +68,7 @@ def tSNEV_CV_PCA(y, text):
     tsne_viz = TSNEVisualizer(ax=ax,
                         decompose="pca",
                         decompose_by=45,
-                        colors=["tomato", "lime","dodgerblue", "fuchsia"],
+                        colors=matplotlib.colors.CSS4_COLORS,
                         random_state=45)
 
     tsne_viz.fit(transformed_text.toarray(), y)
@@ -95,26 +95,23 @@ def umap_CV(y, text):
 
     fig = plt.figure(figsize=(8,8))
     ax = fig.add_subplot(111)
-
-    umap = UMAPVisualizer(ax=ax, colors=["lime", "tomato"])
+    umap = UMAPVisualizer(ax=ax, colors=matplotlib.colors.CSS4_COLORS)
     umap.fit(transformed_text, y)
     umap.show();
 
 if __name__ == '__main__':
-    # filename='risk.txt'
-    # (y, text) = load_data(filename)
-    # TokenFrequencyDistribution(y, text)
-    # tSNEV_CV_SVD(y, text)
-    # tSNEV_CV_PCA(y, text)
-    # tSNEV_CV_PCA2(y, text)
+    filename='risk.txt'
+    (y, text) = load_data(filename)
+    TokenFrequencyDistribution(y, text)
+    tSNEV_CV_SVD(y, text)
+    tSNEV_CV_PCA(y, text)
     
     filename='bdu.txt'
     (y, text) = load_data(filename)
     # import process_nlp
     # text = process_nlp.remove_all_mas(text)
     # text = process_nlp.get_normal_form_mas(text)
-    # TokenFrequencyDistribution(y, text)
-    # tSNEV_CV_SVD(y, text)
-    # tSNEV_CV_PCA(y, text)
-    # tSNEV_CV_PCA2(y, text)
+    TokenFrequencyDistribution(y, text)
+    tSNEV_CV_SVD(y, text)
+    tSNEV_CV_PCA(y, text)
     umap_CV(y, text)
