@@ -19,7 +19,7 @@ def load_data(filename='risk.txt'):
 
 
 #Token Frequency Distribution
-def TokenFrequencyDistribution(y, text):   
+def TokenFrequencyDistribution(y, text,fName):   
     from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 
     vec = CountVectorizer(stop_words="english")
@@ -34,7 +34,10 @@ def TokenFrequencyDistribution(y, text):
 
     freq_dist_viz.fit(transformed_data)
 
-    freq_dist_viz.show();
+    freq_dist_viz.show()
+    
+    # freq_dist_viz.save(fName)
+    
 
     # from yellowbrick.text import freqdist
 
@@ -99,25 +102,34 @@ def umap_CV(y, text, ccolor):
     umap.fit(transformed_text, y)
     umap.show();
 
-if __name__ == '__main__':
-    filename='risk.txt'
-    (y, text) = load_data(filename)
-    ccolor=["tomato", "red","gray", "dodgerblue"]
-    TokenFrequencyDistribution(y, text)
-    tSNEV_CV_SVD(y, text, ccolor)
-    # tSNEV_CV_PCA(y, text, ccolor)
-    umap_CV(y, text, ccolor)
-    
-    filename='bdu.txt'
-    (y, text) = load_data(filename)
-    ccolor=matplotlib.colors.CSS4_COLORS
-    # import process_nlp
-    # text = process_nlp.remove_all_mas(text)
-    # text = process_nlp.get_normal_form_mas(text)
-    # TokenFrequencyDistribution(y, text)
+def save_data():
+    # filename='risk.txt'
+    # (y, text) = load_data(filename)
+    # ccolor=["tomato", "red","gray", "dodgerblue"]
+    # fName='./uploads/TFD_risk.png'
+    # TokenFrequencyDistribution(y, text,fName)
+    # fName='./uploads/tSNE_SVD_risk.png'
     # tSNEV_CV_SVD(y, text, ccolor)
-    tSNEV_CV_PCA(y, text, ccolor)
-    umap_CV(y, text, ccolor)
+    # # tSNEV_CV_PCA(y, text, ccolor)
+    # fName='./uploads/umap_CV_risk.png'
+    # umap_CV(y, text, ccolor)
+    
+    # filename='bdu.txt'
+    # (y, text) = load_data(filename)
+    # ccolor=matplotlib.colors.CSS4_COLORS
+    # # import process_nlp
+    # # text = process_nlp.remove_all_mas(text)
+    # # text = process_nlp.get_normal_form_mas(text)
+    # # TokenFrequencyDistribution(y, text)
+    # # tSNEV_CV_SVD(y, text, ccolor)
+    # fName='./uploads/tSNE_SVD_bdu.png'
+    # tSNEV_CV_PCA(y, text, ccolor)
+    # fName='./uploads/umap_CV_bdu.png'
+    # umap_CV(y, text, ccolor)
+    pass
     
     
-    # tSNEV_CV_PCA2(y, text, ccolor)
+    # # tSNEV_CV_PCA2(y, text, ccolor)
+
+if __name__ == '__main__':
+    save_data()
