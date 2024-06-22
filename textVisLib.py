@@ -44,7 +44,7 @@ def TokenFrequencyDistribution(y, text):
     # freqdist(vec.get_feature_names_out(), transformed_data, orient="v", color="lime", ax=ax);
 
 #t-SNE Corpus Visualization
-def tSNEV_CV_SVD(y, text):
+def tSNEV_CV_SVD(y, text, ccolor):
     vec = TfidfVectorizer(stop_words="english")
     transformed_text = vec.fit_transform(text)
 
@@ -54,12 +54,12 @@ def tSNEV_CV_SVD(y, text):
     tsne_viz = TSNEVisualizer(ax=ax,
                         decompose="svd",
                         decompose_by=45,
-                        random_state=144, colors=matplotlib.colors.CSS4_COLORS)
+                        random_state=144, colors=ccolor)
     tsne_viz.fit(transformed_text.toarray(), y)
     tsne_viz.show();
 
 
-def tSNEV_CV_PCA(y, text):
+def tSNEV_CV_PCA(y, text, ccolor):
     vec = TfidfVectorizer(stop_words="english")
     transformed_text = vec.fit_transform(text)
     fig = plt.figure(figsize=(9,9))
@@ -68,14 +68,14 @@ def tSNEV_CV_PCA(y, text):
     tsne_viz = TSNEVisualizer(ax=ax,
                         decompose="pca",
                         decompose_by=45,
-                        colors=matplotlib.colors.CSS4_COLORS,
+                        colors= ccolor,
                         random_state=45)
 
     tsne_viz.fit(transformed_text.toarray(), y)
     tsne_viz.show();
 
 
-def tSNEV_CV_PCA2(y, text):
+def tSNEV_CV_PCA2(y, text, ccolor):
     vec = TfidfVectorizer(stop_words="english")
     transformed_text = vec.fit_transform(text)
 
@@ -88,30 +88,36 @@ def tSNEV_CV_PCA2(y, text):
     
     
     
-def umap_CV(y, text):
+def umap_CV(y, text, ccolor):
     from yellowbrick.text import UMAPVisualizer
     vec = TfidfVectorizer(stop_words="english")
     transformed_text = vec.fit_transform(text)
 
     fig = plt.figure(figsize=(8,8))
     ax = fig.add_subplot(111)
-    umap = UMAPVisualizer(ax=ax, colors=matplotlib.colors.CSS4_COLORS)
+    umap = UMAPVisualizer(ax=ax, colors = ccolor)
     umap.fit(transformed_text, y)
     umap.show();
 
 if __name__ == '__main__':
     filename='risk.txt'
     (y, text) = load_data(filename)
+    ccolor=["tomato", "red","gray", "dodgerblue"]
     TokenFrequencyDistribution(y, text)
-    tSNEV_CV_SVD(y, text)
-    tSNEV_CV_PCA(y, text)
+    tSNEV_CV_SVD(y, text, ccolor)
+    # tSNEV_CV_PCA(y, text, ccolor)
+    umap_CV(y, text, ccolor)
     
     filename='bdu.txt'
     (y, text) = load_data(filename)
+    ccolor=matplotlib.colors.CSS4_COLORS
     # import process_nlp
     # text = process_nlp.remove_all_mas(text)
     # text = process_nlp.get_normal_form_mas(text)
-    TokenFrequencyDistribution(y, text)
-    tSNEV_CV_SVD(y, text)
-    tSNEV_CV_PCA(y, text)
-    umap_CV(y, text)
+    # TokenFrequencyDistribution(y, text)
+    # tSNEV_CV_SVD(y, text, ccolor)
+    tSNEV_CV_PCA(y, text, ccolor)
+    umap_CV(y, text, ccolor)
+    
+    
+    # tSNEV_CV_PCA2(y, text, ccolor)
