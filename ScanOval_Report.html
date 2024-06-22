@@ -1,0 +1,2385 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Отчет по найденным уязвимостям</title>
+    <style>
+        html {
+            font-family: Arial;
+        }
+
+        .font9pt {
+            font-size: 9pt;
+        }
+
+        .font10pt {
+            font-size: 10pt;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        div.header {
+            background-color: #F2F2F2;
+            vertical-align: middle;
+            padding: 3px 5px 3px 0px;
+            height: 46px;
+            width: 724px;
+        }
+
+            div.header div.reportLogoContainer {
+                float: left;
+                height: 46px;
+                display: table;
+            }
+
+                div.header div.reportLogoContainer div.middle {
+                    display: table-cell;
+                    vertical-align: middle;
+                }
+
+                    div.header div.reportLogoContainer div.middle div.reportLogo {
+                        float: left;
+                        margin: auto;
+                    }
+
+
+            div.header div.reportNameContainer {
+                float: right;
+                height: 46px;
+                display: table;
+            }
+
+                div.header div.reportNameContainer div.middle {
+                    display: table-cell;
+                    vertical-align: middle;
+                }
+
+                    div.header div.reportNameContainer div.middle div.reportName {
+                        float: right;
+                        font-weight: bold;
+                        font-size: 11pt;
+                        color: #9E0000;
+                        text-transform: uppercase;
+                        margin: auto;
+                    }
+
+        div.conent {
+            width: 724px;
+        }
+
+        div.footer {
+            padding: 10px 25px 10px 25px;
+            width: 724px;
+            font-size: 11pt;
+            font-family: Calibri;
+        }
+
+            div.footer div {
+                text-align: center;
+                color: #A9A9A9;
+                margin: auto;
+            }
+
+        tr.hidden {
+            display: none;
+        }
+
+        div.reportInfo {
+            margin-top: 35px;
+        }
+
+            div.reportInfo table.reportInfo {
+                border: 2px #ffffff;
+                margin: auto;
+                width: 722px;
+            }
+
+                div.reportInfo table.reportInfo td.key {
+                    background-color: #D9D9D9;
+                    width: 50%;
+                    padding-left: 5px;
+                    font-size: 10pt;
+                }
+
+                div.reportInfo table.reportInfo td.value {
+                    background-color: #EFF4FB;
+                    width: 50%;
+                    padding-left: 5px;
+                    font-style: italic;
+                    font-size: 9pt;
+                }
+
+        div.vulnerabilities {
+            margin-top: 35px;
+        }
+
+            div.vulnerabilities div.vulnerabTitle {
+                font-family: Calibri;
+                font-size: 11pt;
+                font-weight: bold;
+            }
+
+            div.vulnerabilities table.vulnerabilitiesTbl {
+                border-spacing: 5px 3px;
+                margin-left: -5px;
+            }
+
+                div.vulnerabilities table.vulnerabilitiesTbl thead {
+                    font-weight: bold;
+                    background-color: #D9D9D9;
+                    font-size: 9pt;
+                    font-family: Calibri;
+                }
+
+                    div.vulnerabilities table.vulnerabilitiesTbl thead td.bduidHead {
+                        text-align: center;
+                        width: 180px;
+                    }
+
+                    div.vulnerabilities table.vulnerabilitiesTbl thead td.riskHead {
+                        text-align: center;
+                        width: 100px;
+                    }
+
+                    div.vulnerabilities table.vulnerabilitiesTbl thead td.descrHead {
+                        width: 464px;
+                    }
+
+                div.vulnerabilities table.vulnerabilitiesTbl tr.even {
+                    background-color: #EFF4FB;
+                }
+
+                div.vulnerabilities table.vulnerabilitiesTbl td {
+                    font-size: 9pt;
+                }
+
+                    div.vulnerabilities table.vulnerabilitiesTbl td.bdu {
+                        text-align: center;
+                        vertical-align: top;
+                    }
+
+                    div.vulnerabilities table.vulnerabilitiesTbl td.riskTextColor {
+                        color: #ffffff;
+                    }
+
+                    div.vulnerabilities table.vulnerabilitiesTbl td.risk {
+                        text-align: center;
+                        vertical-align: top;
+                    }
+
+                    div.vulnerabilities table.vulnerabilitiesTbl td.desc {
+                        padding: 3px 7px 3px 7px;
+                    }
+
+                    div.vulnerabilities table.vulnerabilitiesTbl td.fileslist {
+                        color: #515151;
+                        font-style: italic;
+                    }
+
+                    div.vulnerabilities table.vulnerabilitiesTbl td.prods {
+                        font-size: 8pt;
+                    }
+
+
+        div.vulnerabilitiesList {
+            margin-top: 35px;
+        }
+
+            div.vulnerabilitiesList div.vulnListTitle {
+                font-family: Calibri;
+                font-size: 11pt;
+                font-weight: bold;
+            }
+
+            div.vulnerabilitiesList div.ref_id {
+                padding-top: 2px;
+                padding-bottom: 2px;
+                font-weight: bold;
+                vertical-align: middle;
+            }
+
+            div.vulnerabilitiesList div.ref_ref {
+                padding-top: 2px;
+                padding-bottom: 2px;
+                padding-left: 37px;
+                height: 17px;
+                vertical-align: middle;
+            }
+
+            div.vulnerabilitiesList table.vulnerabilitiesListTbl {
+                border-spacing: 5px 3px;
+                width: 100%;
+                font-size: 9pt;
+            }
+
+                div.vulnerabilitiesList table.vulnerabilitiesListTbl td.key {
+                    width: 20%;
+                }
+
+                div.vulnerabilitiesList table.vulnerabilitiesListTbl td.vulnerabTC {
+                    color: #FFFFFF;
+                }
+
+
+
+                div.vulnerabilitiesList table.vulnerabilitiesListTbl td.vulnerab {
+                    padding: 7px 17px 7px 17px;
+                    text-align: center;
+                }
+
+                div.vulnerabilitiesList table.vulnerabilitiesListTbl td.title {
+                    background-color: #D9D9D9;
+                    padding: 7px 17px 7px 17px;
+                    text-align: center;
+                }
+
+                div.vulnerabilitiesList table.vulnerabilitiesListTbl td.value {
+                    background-color: #EFF4FB;
+                }
+
+                div.vulnerabilitiesList table.vulnerabilitiesListTbl td.valueMargin {
+                    padding: 7px 7px 7px 7px;
+                }
+
+        div.reportStat {
+            margin-top: 35px;
+            padding-left: 15%;
+            padding-right: 15%;
+        }
+
+            div.reportStat table.statTable {
+                width: 100%;
+                margin: auto;
+            }
+
+        table.statTable thead td {
+            background-color: #EFF4FB;
+            text-align: center;
+            padding: 3px 3px 3px 3px;
+            font-weight: bold;
+            font-size: 9pt;
+        }
+
+        table.statTable tbody td {
+            text-align: center;
+            padding: 3px 3px 3px 3px;
+            font-size: 9pt;
+        }
+
+            table.statTable tbody td.key {
+                color: #ffffff;
+            }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <div class="reportLogoContainer">
+                <div class="middle">
+                    <div class="reportLogo">
+                        <img alt="Logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIgAAAAeCAYAAAD3hVYMAAAJpElEQVRoge2bf1BU1xXHPyuyyo+ICMpiFAGjW2HXSDVFiEoUo4KaHwY1iejIkMwYqrGJrZKQSRo7icGMZhwsaUcZjKgxo0GNFrXjL5IqOsEYXZA+E0TALGaEEBp+RChu/9i+677dtytjdlNS+M7szJl7zzv3vnfPu99zzn2r+dWbj1j89UEANEsN9Mrq8q11tfRE9OkuC9Dd5Z6KPtA9FqC7yz0VfbrLAvwS5J6IXorpotxT0Rc8/3DD6wcyOiEWgA5zK2XGGm62N3WLhe+q7H2XB7lm9UsA1N+8SV7+jrto/3Kg8WQWkzbyMRbq5xB03yCHgRt++I6PpEPkV37SbZzAlayWxURH6Xn1ldUYDNFoNBrR3tnZyblzn7MsY6VCd9fOD9BoNNTV3WBm0uOqC5KelsrKlSsAMJnKWLQ43Wl/ZmYWRUeOqdoB2FmQh9FooKWlhbiHpznVcwWPUcx7cWvImLBE1TkAgu4bRMaEJRRMWtdtnMCVbI/oKD0fbNuK0WhQOAeAl5cX8fETOXr4gGgrvyxx48a3AAwZMljVJsC0aVOFvHPnhw79CxbMF/KiRc84teMueCSLmaGLZVLYQ2KQmvrr5JZuJ6v4XfJP7UKqrxR9J+pK3DauJ2V7bNywHq1WC1jf9MzMLMaOi2XTphwaGxsBCA3V8ZfcTeKaqqprgNWB0tNSVRdErx8NQHt7u+ruoNOFOOh6En098UBnDp4kBmj44TuWffaGIubI/baQxQEzaQv4N3trjncbJ3BJMbSKe4qO0hMaqgMcaSAvfwd5+TsoPnmEwMBAYmPvvCg5m3OJj58IWHcK+1glOkovnE6SrjgsVva6tYrdSqvVkp6W6tGYxyMUEzJkiBjg0+vnVAPSgqajXXKO2EHRTL1tZF5CMnr/MJf648fHMEMXK/QHawOc6se0jGBeQjIzdLGE1w8UO598rb2+LZYsXiRk+xhBRtHho4B1t4iO0gNWmpF3F7W3f8XyDCGfOHHSoX/cuAcBaGxsFHbmzp2jOr674LEsRsZgv+B7svPqE8tJGTMbH+/+CntSbCU5F7ZzvORTof+ENp5lv08jyDfQ4QalyY76zVIDqzKy0QePBKB2nJlg30GKsbJutbHNtEcE0bZZzLBh9wNWGnCGQ4eKWPTs0wDMmZNM+WUJgIoKifj4iWi1WpJnTVfQyJgxVkfq7OxU3V1keqmosNqKj5/IiBFhTufgDnikUHa1tkoMMCnsId6ev/qub7+tvGXpehaPfcrBOQD0wSNZPyWT8eNjAKtzZD35sqpzqOmrOfHwgKEOY/n28yFjwhKe0MY7DVQ7OjpU2wHhEPbI2ZwrZPsgMzDQeg/V1TUO161YniHoJWdzrrDjKp5xBzxCMTvNRbR1/CgGeXJMEjtmb6Ti9ZPsSMxmg3EVK5LTVClgXkKyIsCtbTLz1r6NFFz6WNjcZtqD1FxDs9TAacqpbTIL3dzS7az+8E2Ofl0sbPj282Gx/nHFWJZbtxUPQqqvJLvkffae/UTRnjJZPR29V5RflsTOI+9EYI0vZBw8eMjhOnl3aWxspPyyRPlliZaWFkCZ2bgbHqEYqbmGlQVZrHv6NYc3Wx88En3wSKYQx1LjfHJ02xSxSMroJKFb22RmyZYXaR4OVJzBVF5GUPgQhf7N9iaWbHmRF2ens+Wfe6kyXcVfH8TJ8yZ82rVMiYoDYITPUMU8NYl9FOOkHl8jbN4XHMDMBxLEfO0p5qdCkq5gNBoIDAwkOkpP+WVJxBfO6EXeXWR6Abh6tQqj0aDIbNwNj53FXPCrZtbB53lr30b2VRxGqq+kpv66YnDffj6siXtBBIkAYf5DRf+xC6eszvFfmyf7mFQD2+bh8PalPOEccnuD5nthS9Ovj8M8ZZSaLyraj39+StHvjGLuFbb1DTkwlWsjzuhFhi1FyXY0Go1iB3In+no6RdyvP8P+S2cU7Rkh80h75FkxiedmLua18zk0Sw0ELbxTWPta802XxkoJS+SZUXMJWzjM5c06o5jOpg6FTe8E364+v3tC0ZFjrF37BlqtloiIcNLTUvHy8gKg5Ow5B/0JE34N3KEXNTvyDuRu/CxnMfZyLoWMqhklYo3wgcOcppRdcY41cS/c9UYtt247pRivAG8H+/ZzUKOY/v0dg2gZybOmu5yPTDM6XYhIVS0WC9nr33OwI9dGBgwYQMnpE4p+2bF0uhBBV+7E/+y4/4a5TkzCdvFab7WJ9pC2gXe185xhodA/X3mR1L+9zEMfpTBm7VT2VRwWfa4oxr69w9yq6LPXv2QqA5Q1DnskJEwRsv2iw506h0ajITIyAkCU4m1hm+l4eXnh5+en+MkOotFoFFTkLngki4kwRnJk7hYKJq0jwhjpoONfC1PHThaTqO/8XuhI390pw09+ME5xrd4/TBGvNEsNirOewut/F9mNvz4IX28lVXSZYoa6ppjs9e9hsVgAa8ndHtFRehITrWcqcqZhj7z8HXR2diravvzyooOebendZCpT/cl25EzHnXA7xUQYI/nrtD8R5BtIkG8gH8/5M6fK/sGlsK/4V3szD1ju57G5SYrs5nDVKWGn5JsviAk1ABATamCDcRXvaLcS6T+M1THPM3hGMH84tU4Uvto6fhQ1jJTRSVwpk7imh5SwRCYP/40Yw90UU1ZWjtFoIDRUR8npE1y8aKLq2jXGGg1ERY0Rb/b+AwedPvzq6hqxe1gsFta88rqiPz0tVdBLaekXitNhW+wv3E1kZIQiK7KFt7e3+BxBDa4+UfDIWUzVN9UMD7BmIz7e/UmKmU4S6px89OtiCouLxLU5Rfkkhj8sqpxTouJEqipj86Nvktr+MlJzDZ9/dUH0x4Qa2PPbrarj/FSKsT2LAWuJ/ejhA4SG6vDz8yM+fqI4Z5Fx5sxZVXqRcfDgIXF0r0YvtmV02+zFlZ0VyzMcHEmr1YqqrhpaWlqcOojbKabKdJVVpg1kFb/L+UrHLVNGbZOZ7JL3+d2uPzrYeemzt51e23qrjdzS7YJK3pG2ikLZ3eAuipExM+lxdu7aLc5FwLoT1NXdIDMzy+kbL8OWZuSTXlvIZXT77MWVHTnjcRc0E3Y/ZfF0QDr1tlE89A5zK2X9u/ZFWeygaMZ76xkYYqWj2urrHGk7q3rt0kcXMHpgOJ1NHXgFeHPl+2uUfnGe0QYrL9+svMEFv2qhnxg3hQCtPx3mVswDmhSxy2BtAIYfw8ScC4uL8C5U7iA9BR79ouz/Se79X0w3WozuKPdU9P4vpotyT0Xv/2J6dxGX6KWYLso9Fb0U00sxLvEfRD8ZTOIHEOIAAAAASUVORK5CYII=" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="reportNameContainer">
+                <div class="middle">
+                    <div class="reportName">Отчёт</div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <div class="conent">
+        <div class="reportInfo">
+            <table class="reportInfo">
+                <tr>
+                    <td class="key">№ отчета</td>
+                    <td class="value">01d56296-b481-42d3-8e24-ef5e5a24cbe4</td>
+                </tr>
+                <tr>
+                    <td class="key">№ сканирования</td>
+                    <td class="value">c0cf25c9-f74b-45b3-a705-3dc74cf51b3c</td>
+                </tr>
+                <tr>
+                    <td class="key">Профиль</td>
+                    <td class="value">Уязвимости</td>
+                </tr>
+                <tr>
+                    <td class="key">Начало/завершение сканирования</td>
+                    <td class="value">22.06.2024 1:42:38 / 22.06.2024 1:45:20</td>
+                </tr>
+                <tr>
+                    <td class="key">Формирование отчета</td>
+                    <td class="value">22.06.2024 1:46:53</td>
+                </tr>
+
+            </table>
+        </div>
+
+        <div class="reportStat">
+            <table class="statTable">
+                <thead>
+                    <tr>
+                        <th style="width: 30%;">Уровень опасности</th>
+                        <th style="width: 35%;">Найдено</th>
+                        <th style="width: 35%;">Всего</th>
+                    </tr>
+                </thead>
+                <tr >
+                    <td class='key'><div style='background-color: #89171A;'>Критический<div></td>
+                    <td>5</td>
+                    <td>4477</td>
+                </tr><tr >
+                    <td class='key'><div style='background-color: #CC0000;'>Высокий<div></td>
+                    <td>18</td>
+                    <td>9332</td>
+                </tr><tr >
+                    <td class='key'><div style='background-color: #F5770F;'>Средний<div></td>
+                    <td>24</td>
+                    <td>9615</td>
+                </tr><tr >
+                    <td class='key'><div style='background-color: #00705C;'>Низкий<div></td>
+                    <td>2</td>
+                    <td>984</td>
+                </tr><tr >
+                    <td ><div style='background-color: #FFFFFF;'>Недоступно<div></td>
+                    <td>0</td>
+                    <td>1</td>
+                </tr><tr style='background-color: #EFF4FB;'>
+                    <td ><div style='background-color: ;'>Всего<div></td>
+                    <td>49</td>
+                    <td>24409</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="vulnerabilities">
+            <div class="vulnerabTitle">Уязвимости [49]</div>
+            <br/>
+            <table class="vulnerabilitiesTbl">
+                <thead>
+                    <tr>
+                        <td class="bduidHead">Идентификатор уязвимости</td>
+                        <td class="riskHead">Уровень опасности</td>
+                        <td class="descrHead">Название уязвимости</td>
+                    </tr>
+                </thead>
+                <tr >
+                <td class="bdu">BDU:2021-00145</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #89171A; ' >Критический</div>
+                </td>
+                <td class="desc">Уязвимость удаленного выполнения кода в Microsoft Defender.</td>
+            </tr>
+            <tr calss=" ">
+                <td class="fileslist prods" colspan="2"></td>
+                <td class="desc fileslist">C:\ProgramData\Microsoft\Windows Defender\Definition Updates\Default\MpEngine.dll (1.1.17300.4)<br/>C:\ProgramData\Microsoft\Windows Defender\Definition Updates\{BB7E4B88-2C05-4A1F-9380-3BEA3D09C5A1}\mpengine.dll (1.1.17300.4)</td>
+            </tr><tr even>
+                <td class="bdu">BDU:2024-01322</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #89171A; ' >Критический</div>
+                </td>
+                <td class="desc">Уязвимость удаленного выполнения кода Microsoft Outlook</td>
+            </tr>
+            <tr calss="even ">
+                <td class="fileslist prods" colspan="2">cpe:/a:microsoft:office:2021</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Office\ClickToRun\Configuration!VersionToReport:16.0.14332.20624</td>
+            </tr><tr >
+                <td class="bdu">BDU:2023-01390</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #89171A; ' >Критический</div>
+                </td>
+                <td class="desc">Уязвимость обхода функции защиты Microsoft Defender for Endpoint Security.</td>
+            </tr>
+            <tr calss=" ">
+                <td class="fileslist prods" colspan="2">cpe:/a:microsoft:windows_defender</td>
+                <td class="desc fileslist">module_name=Defender, module_id={c46be3dc-30a9-452f-a5fd-4bf9ca87a854}, module_version=1.0, verb=Get, noun=MpComputerStatus, parameters=, select=AntivirusSignatureVersion, value=0.0.0.0</td>
+            </tr><tr even>
+                <td class="bdu">BDU:2023-00658</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #89171A; ' >Критический</div>
+                </td>
+                <td class="desc">WireGuard 0.5.3 не полностью учитывает возможность того, что злоумышленник может установить системное время жертвы на будущее значение, что позволяет привести к результату, в котором один статический закрытый ключ становится постоянно бесполезным.</td>
+            </tr>
+            <tr calss="even ">
+                <td class="fileslist prods" colspan="2">cpe:/a:wireguard:wireguard</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall\{2FDB79CE-5193-4A39-82BB-E00158CC1533}!DisplayVersion:0.5.3</td>
+            </tr><tr >
+                <td class="bdu">BDU:2024-04136</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #89171A; ' >Критический</div>
+                </td>
+                <td class="desc">Уязвимость в LibreOffice версии 7.6 до 7.6.7, и 24.0 до 24.2.3 позволяет злоумышленнику создать документ, который без запроса будет выполнять встроенные в LibreOffice скрипты при щелчке по графическому изображению.</td>
+            </tr>
+            <tr calss=" ">
+                <td class="fileslist prods" colspan="2">cpe:/a:libreoffice:libreoffice</td>
+                <td class="desc fileslist">C:\Program Files\LibreOffice\program\soffice.exe (24.2.2.2)</td>
+            </tr><tr even>
+                <td class="bdu">BDU:2024-01413</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #CC0000; ' >Высокий</div>
+                </td>
+                <td class="desc">Уязвимость удаленного выполнения кода Microsoft Outlook</td>
+            </tr>
+            <tr calss="even ">
+                <td class="fileslist prods" colspan="2">cpe:/a:microsoft:office:2021</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Office\ClickToRun\Configuration!VersionToReport:16.0.14332.20624</td>
+            </tr><tr >
+                <td class="bdu">BDU:2024-04042</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #CC0000; ' >Высокий</div>
+                </td>
+                <td class="desc">Уязвимость в Git до 2.45.1, 2.44.1, 2.43.4, 2.42.2, 2.41.1, 2.40.2, и 2.39.4.</td>
+            </tr>
+            <tr calss=" ">
+                <td class="fileslist prods" colspan="2">cpe:/a:git_project:git</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\SOFTWARE\GitForWindows!CurrentVersion:2.43.0</td>
+            </tr><tr even>
+                <td class="bdu">BDU:2021-04121</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #CC0000; ' >Высокий</div>
+                </td>
+                <td class="desc">Уязвимость, связанная с повышением привилегий в Защитнике Microsoft Windows.</td>
+            </tr>
+            <tr calss="even ">
+                <td class="fileslist prods" colspan="2">cpe:/a:microsoft:windows_defender</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\Signature Updates!EngineVersion:1.1.17300.4</td>
+            </tr><tr >
+                <td class="bdu">BDU:2023-02200</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #CC0000; ' >Высокий</div>
+                </td>
+                <td class="desc">Уязвимость отказа в обслуживании Microsoft Defender.</td>
+            </tr>
+            <tr calss=" ">
+                <td class="fileslist prods" colspan="2">cpe:/a:microsoft:windows_defender</td>
+                <td class="desc fileslist">C:\ProgramData\Microsoft\Windows Defender\Definition Updates\Default\MpEngine.dll (1.1.17300.4)<br/>C:\ProgramData\Microsoft\Windows Defender\Definition Updates\{BB7E4B88-2C05-4A1F-9380-3BEA3D09C5A1}\mpengine.dll (1.1.17300.4)</td>
+            </tr><tr even>
+                <td class="bdu">BDU:2021-03065</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #CC0000; ' >Высокий</div>
+                </td>
+                <td class="desc">Уязвимость удаленного выполнения кода в Microsoft Defender.</td>
+            </tr>
+            <tr calss="even ">
+                <td class="fileslist prods" colspan="2"></td>
+                <td class="desc fileslist">C:\ProgramData\Microsoft\Windows Defender\Definition Updates\Default\MpEngine.dll (1.1.17300.4)<br/>C:\ProgramData\Microsoft\Windows Defender\Definition Updates\{BB7E4B88-2C05-4A1F-9380-3BEA3D09C5A1}\mpengine.dll (1.1.17300.4)</td>
+            </tr><tr >
+                <td class="bdu">BDU:2022-00643</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #CC0000; ' >Высокий</div>
+                </td>
+                <td class="desc">Уязвимость удаленного выполнения кода Microsoft Defender.</td>
+            </tr>
+            <tr calss=" ">
+                <td class="fileslist prods" colspan="2">cpe:/a:microsoft:windows_defender</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\Signature Updates!EngineVersion:1.1.17300.4</td>
+            </tr><tr even>
+                <td class="bdu">BDU:2024-04508</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #CC0000; ' >Высокий</div>
+                </td>
+                <td class="desc">Уязвимость удаленного выполнение кода Microsoft Outlook.</td>
+            </tr>
+            <tr calss="even ">
+                <td class="fileslist prods" colspan="2">cpe:/a:microsoft:office:2021</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Office\ClickToRun\Configuration!VersionToReport:16.0.14332.20624</td>
+            </tr><tr >
+                <td class="bdu">BDU:2024-01557</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #CC0000; ' >Высокий</div>
+                </td>
+                <td class="desc">Уязвимость удаленного выполнения кода Microsoft Office OneNote</td>
+            </tr>
+            <tr calss=" ">
+                <td class="fileslist prods" colspan="2">cpe:/a:microsoft:office:2021</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Office\ClickToRun\Configuration!VersionToReport:16.0.14332.20624</td>
+            </tr><tr even>
+                <td class="bdu">BDU:2022-02753</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #CC0000; ' >Высокий</div>
+                </td>
+                <td class="desc">Уязвимость удаленного выполнения кода Microsoft Defender. Этот CVE ID отличается от CVE-2021-34522.</td>
+            </tr>
+            <tr calss="even ">
+                <td class="fileslist prods" colspan="2">cpe:/a:microsoft:windows_defender</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\Signature Updates!EngineVersion:1.1.17300.4</td>
+            </tr><tr >
+                <td class="bdu">BDU:2024-01556</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #CC0000; ' >Высокий</div>
+                </td>
+                <td class="desc">Уязвимость удаленного выполнения кода Microsoft Word</td>
+            </tr>
+            <tr calss=" ">
+                <td class="fileslist prods" colspan="2">cpe:/a:microsoft:office:2021</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Office\ClickToRun\Configuration!VersionToReport:16.0.14332.20624</td>
+            </tr><tr even>
+                <td class="bdu">BDU:2024-04053</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #CC0000; ' >Высокий</div>
+                </td>
+                <td class="desc">Уязвимость удаленного выполнение кода в Microsoft Excel.</td>
+            </tr>
+            <tr calss="even ">
+                <td class="fileslist prods" colspan="2">cpe:/a:microsoft:office:2021</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Office\ClickToRun\Configuration!VersionToReport:16.0.14332.20624</td>
+            </tr><tr >
+                <td class="bdu">BDU:2024-03872</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #CC0000; ' >Высокий</div>
+                </td>
+                <td class="desc">Уязвимость в Git до версии 2.45.1, 2.44.1, 2.43.4, 2.42.2, 2.41.1, 2.40.2, и 2.39.4.</td>
+            </tr>
+            <tr calss=" ">
+                <td class="fileslist prods" colspan="2">cpe:/a:git_project:git</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\SOFTWARE\GitForWindows!CurrentVersion:2.43.0</td>
+            </tr><tr even>
+                <td class="bdu">BDU:2022-03110</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #CC0000; ' >Высокий</div>
+                </td>
+                <td class="desc">Графический драйвер NVIDIA содержит уязвимость в DirectX11 user mode driver (nvwgf2um/x.dll), что может привести к выполнению кода, вызвать отказ в обслуживании, повышению привилегий, раскрытию информации.</td>
+            </tr>
+            <tr calss="even ">
+                <td class="fileslist prods" colspan="2">cpe:/a:nvidia:graphics_driver</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_Display.Driver!DisplayVersion:511.81</td>
+            </tr><tr >
+                <td class="bdu">BDU:2023-05606</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #CC0000; ' >Высокий</div>
+                </td>
+                <td class="desc">Уязвимость обхода функции безопасности Microsoft Defender.</td>
+            </tr>
+            <tr calss=" ">
+                <td class="fileslist prods" colspan="2">cpe:/a:microsoft:windows_defender</td>
+                <td class="desc fileslist">C:\ProgramData\Microsoft\Windows Defender\Definition Updates\Default\MpEngine.dll (1.1.17300.4)<br/>C:\ProgramData\Microsoft\Windows Defender\Definition Updates\{BB7E4B88-2C05-4A1F-9380-3BEA3D09C5A1}\mpengine.dll (1.1.17300.4)</td>
+            </tr><tr even>
+                <td class="bdu">BDU:2022-03426</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #CC0000; ' >Высокий</div>
+                </td>
+                <td class="desc">Уязвимость отказа в обслуживании Microsoft Defender.</td>
+            </tr>
+            <tr calss="even ">
+                <td class="fileslist prods" colspan="2">cpe:/a:microsoft:windows_defender</td>
+                <td class="desc fileslist">C:\ProgramData\Microsoft\Windows Defender\Definition Updates\Default\MpEngine.dll (1.1.17300.4)<br/>C:\ProgramData\Microsoft\Windows Defender\Definition Updates\{BB7E4B88-2C05-4A1F-9380-3BEA3D09C5A1}\mpengine.dll (1.1.17300.4)</td>
+            </tr><tr >
+                <td class="bdu">BDU:2022-03060</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #CC0000; ' >Высокий</div>
+                </td>
+                <td class="desc">Графический драйвер NVIDIA содержит уязвимость в обработчике режима ядра, что может привести к выполнению кода, отказу в обслуживании, повышению привилегий, раскрытию информации.</td>
+            </tr>
+            <tr calss=" ">
+                <td class="fileslist prods" colspan="2">cpe:/a:nvidia:graphics_driver</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_Display.Driver!DisplayVersion:511.81</td>
+            </tr><tr even>
+                <td class="bdu">BDU:2022-01339</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #CC0000; ' >Высокий</div>
+                </td>
+                <td class="desc">С тем, как функция WinVerifyTrust обрабатывает проверку подписи Authenticode в Windows для переносимых исполняемых (PE) файлов, связано существование уязвимости, делающей возможным удаленное выполнение кода. Анонимный злоумышленник может воспользоваться этой уязвимостью, изменив существующий подписанный переносимый исполняемый (PE) файл для обработки непроверенных частей файла. В результате в файл может быть добавлен вредоносный код без нарушения подлинности подписи. Воспользовавшись этой уязвимостью, злоумышленник может установить полный контроль над системой. После этого злоумышленник сможет устанавливать программы, просматривать, изменять и уничтожать данные или создавать новые учетные записи с неограниченными правами.</td>
+            </tr>
+            <tr calss="even ">
+                <td class="fileslist prods" colspan="2">cpe:/o:microsoft:windows_11</td>
+                <td class="desc fileslist"></td>
+            </tr><tr >
+                <td class="bdu">BDU:2024-01478</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #CC0000; ' >Высокий</div>
+                </td>
+                <td class="desc">Уязвимость удаленного выполнения кода Microsoft Office</td>
+            </tr>
+            <tr calss=" ">
+                <td class="fileslist prods" colspan="2">cpe:/a:microsoft:office:2021</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Office\ClickToRun\Configuration!VersionToReport:16.0.14332.20624</td>
+            </tr><tr even>
+                <td class="bdu">BDU:2023-06987</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #F5770F; ' >Средний</div>
+                </td>
+                <td class="desc">Уязвимость в WireGuard 0.5.3 позволяет злоумышленнику обманом заставить жертву блокировать трафик в локальную сеть даже при включенном VPN.</td>
+            </tr>
+            <tr calss="even ">
+                <td class="fileslist prods" colspan="2">cpe:/a:wireguard:wireguard</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall\{2FDB79CE-5193-4A39-82BB-E00158CC1533}!DisplayVersion:0.5.3</td>
+            </tr><tr >
+                <td class="bdu">BDU:2024-04608</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #F5770F; ' >Средний</div>
+                </td>
+                <td class="desc">Уязвимость перехвата бинарных файлов в WiX.</td>
+            </tr>
+            <tr calss=" ">
+                <td class="fileslist prods" colspan="2">cpe:/a:microsoft:visual_studio:2022</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall\283e9858!DisplayVersion:17.10.1</td>
+            </tr><tr even>
+                <td class="bdu">BDU:2024-04093</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #F5770F; ' >Средний</div>
+                </td>
+                <td class="desc">Уязвимость в Git до версии 2.45.1, 2.44.1, 2.43.4, 2.42.2, 2.41.1, 2.40.2, и 2.39.4.</td>
+            </tr>
+            <tr calss="even ">
+                <td class="fileslist prods" colspan="2">cpe:/a:git_project:git</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\SOFTWARE\GitForWindows!CurrentVersion:2.43.0</td>
+            </tr><tr >
+                <td class="bdu">BDU:2022-07001</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #F5770F; ' >Средний</div>
+                </td>
+                <td class="desc">Уязвимость повышения привилегий защитника Microsoft Windows.</td>
+            </tr>
+            <tr calss=" ">
+                <td class="fileslist prods" colspan="2">cpe:/a:microsoft:windows_defender</td>
+                <td class="desc fileslist">C:\ProgramData\Microsoft\Windows Defender\Definition Updates\Default\MpEngine.dll (1.1.17300.4)<br/>C:\ProgramData\Microsoft\Windows Defender\Definition Updates\{BB7E4B88-2C05-4A1F-9380-3BEA3D09C5A1}\mpengine.dll (1.1.17300.4)</td>
+            </tr><tr even>
+                <td class="bdu">BDU:2024-03125</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #F5770F; ' >Средний</div>
+                </td>
+                <td class="desc">Проникновение HTTP-запроса (HRS) в Node.js 18.x до 18.20.1, 20.x до 20.12.1, и 21.x до 21.7.2.</td>
+            </tr>
+            <tr calss="even ">
+                <td class="fileslist prods" colspan="2">cpe:/a:node.js:node.js</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall\{A56DECD3-5312-4F1D-B185-9A47DE16BCEC}!DisplayVersion:20.11.0</td>
+            </tr><tr >
+                <td class="bdu">BDU:2016-00218</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #F5770F; ' >Средний</div>
+                </td>
+                <td class="desc">Microsoft Internet Explorer 7 по 11 и Microsoft Edge позволяет удалённым злоумышленникам обойти защитный ASLR механизм через специально сформированный веб-сайт.</td>
+            </tr>
+            <tr calss=" ">
+                <td class="fileslist prods" colspan="2"></td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment!PROCESSOR_ARCHITECTURE:AMD64</td>
+            </tr><tr even>
+                <td class="bdu">BDU:2022-03959</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #F5770F; ' >Средний</div>
+                </td>
+                <td class="desc">Графический драйвер NVIDIA содержит уязвимость в обработчике режима ядра (nvlddmkm.sys) для DxgkDdiEscape, которая может привести к отказу в обслуживании.</td>
+            </tr>
+            <tr calss="even ">
+                <td class="fileslist prods" colspan="2">cpe:/a:nvidia:graphics_driver</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_Display.Driver!DisplayVersion:511.81</td>
+            </tr><tr >
+                <td class="bdu">BDU:2023-02445</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #F5770F; ' >Средний</div>
+                </td>
+                <td class="desc">Уязвимость отказа в обслуживании в pip пакете setuptools до 65.5.1.</td>
+            </tr>
+            <tr calss=" ">
+                <td class="fileslist prods" colspan="2">cpe:/a:pypi:pip</td>
+                <td class="desc fileslist">textfilecontent: C:\Python311\Lib\site-packages\setuptools-65.5.0.dist-info\METADATA<br/>textfilecontent: C:\Python38\Lib\site-packages\setuptools-49.2.1.dist-info\METADATA<br/>textfilecontent: C:\Python39\Lib\site-packages\setuptools-58.1.0.dist-info\METADATA</td>
+            </tr><tr even>
+                <td class="bdu">BDU:2021-05768</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #F5770F; ' >Средний</div>
+                </td>
+                <td class="desc">Уязвимость удаленного выполнения кода в Microsoft Defender.</td>
+            </tr>
+            <tr calss="even ">
+                <td class="fileslist prods" colspan="2">cpe:/a:microsoft:windows_defender</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\Signature Updates!EngineVersion:1.1.17300.4</td>
+            </tr><tr >
+                <td class="bdu">BDU:2022-03932</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #F5770F; ' >Средний</div>
+                </td>
+                <td class="desc">Графический драйвер NVIDIA содержит уязвимость в обработчике режима ядра (nvlddmkm.sys), что может привести к отказу в обслуживании.</td>
+            </tr>
+            <tr calss=" ">
+                <td class="fileslist prods" colspan="2">cpe:/a:nvidia:graphics_driver</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_Display.Driver!DisplayVersion:511.81</td>
+            </tr><tr even>
+                <td class="bdu">BDU:2022-03930</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #F5770F; ' >Средний</div>
+                </td>
+                <td class="desc">Графический драйвер NVIDIA содержит уязвимость в ECC, что может привести к отказу в обслуживании.</td>
+            </tr>
+            <tr calss="even ">
+                <td class="fileslist prods" colspan="2">cpe:/a:nvidia:graphics_driver</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_Display.Driver!DisplayVersion:511.81</td>
+            </tr><tr >
+                <td class="bdu">BDU:2021-03061</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #F5770F; ' >Средний</div>
+                </td>
+                <td class="desc">Уязвимость, приводящая к отказу в обслуживании Microsoft Defender.</td>
+            </tr>
+            <tr calss=" ">
+                <td class="fileslist prods" colspan="2"></td>
+                <td class="desc fileslist">C:\ProgramData\Microsoft\Windows Defender\Definition Updates\Default\MpEngine.dll (1.1.17300.4)<br/>C:\ProgramData\Microsoft\Windows Defender\Definition Updates\{BB7E4B88-2C05-4A1F-9380-3BEA3D09C5A1}\mpengine.dll (1.1.17300.4)</td>
+            </tr><tr even>
+                <td class="bdu">BDU:2022-03939</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #F5770F; ' >Средний</div>
+                </td>
+                <td class="desc">Графический драйвер NVIDIA содержит уязвимость в обработчике режима ядра (nvlddmkm.sys) для DxgkDdiEscape, которая позволяет вызвать отказ в обслуживании.</td>
+            </tr>
+            <tr calss="even ">
+                <td class="fileslist prods" colspan="2">cpe:/a:nvidia:graphics_driver</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_Display.Driver!DisplayVersion:511.81</td>
+            </tr><tr >
+                <td class="bdu">BDU:2024-00145</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #F5770F; ' >Средний</div>
+                </td>
+                <td class="desc">Уязвимость повышения привилегий в Microsoft Windows Defender.</td>
+            </tr>
+            <tr calss=" ">
+                <td class="fileslist prods" colspan="2">cpe:/a:microsoft:windows_defender</td>
+                <td class="desc fileslist">module_name=Defender, module_id={c46be3dc-30a9-452f-a5fd-4bf9ca87a854}, module_version=1.0, verb=Get, noun=MpComputerStatus, parameters=, select=AMProductVersion, value=4.18.2201.11</td>
+            </tr><tr even>
+                <td class="bdu">BDU:2023-03310</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #F5770F; ' >Средний</div>
+                </td>
+                <td class="desc">Уязвимость проверки входных данных в pip пакете pip до 21.1.</td>
+            </tr>
+            <tr calss="even ">
+                <td class="fileslist prods" colspan="2">cpe:/a:pypi:pip</td>
+                <td class="desc fileslist">textfilecontent: C:\Python38\Lib\site-packages\pip-20.2.3.dist-info\METADATA</td>
+            </tr><tr >
+                <td class="bdu">BDU:2022-03126</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #F5770F; ' >Средний</div>
+                </td>
+                <td class="desc">Графический драйвер NVIDIA содержит уязвимость в обработчике режима ядра, что может привести к отказу в обслуживании и раскрытию информации.</td>
+            </tr>
+            <tr calss=" ">
+                <td class="fileslist prods" colspan="2">cpe:/a:nvidia:graphics_driver</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_Display.Driver!DisplayVersion:511.81</td>
+            </tr><tr even>
+                <td class="bdu">BDU:2022-03941</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #F5770F; ' >Средний</div>
+                </td>
+                <td class="desc">Графический драйвер NVIDIA содержит уязвимость в обработчике режима ядра (nvlddmkm.sys) для DxgkDdiEscape, что может привести к отказу в обслуживании и раскрытию информации.</td>
+            </tr>
+            <tr calss="even ">
+                <td class="fileslist prods" colspan="2">cpe:/a:nvidia:graphics_driver</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_Display.Driver!DisplayVersion:511.81</td>
+            </tr><tr >
+                <td class="bdu">BDU:2023-08026</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #F5770F; ' >Средний</div>
+                </td>
+                <td class="desc">Уязвимость ввода команд в pip пакете pip до 23.3.</td>
+            </tr>
+            <tr calss=" ">
+                <td class="fileslist prods" colspan="2">cpe:/a:pypi:pip</td>
+                <td class="desc fileslist">textfilecontent: C:\Python38\Lib\site-packages\pip-20.2.3.dist-info\METADATA<br/>textfilecontent: C:\Python39\Lib\site-packages\pip-21.2.4.dist-info\METADATA</td>
+            </tr><tr even>
+                <td class="bdu">BDU:2023-02598</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #F5770F; ' >Средний</div>
+                </td>
+                <td class="desc">Уязвимость обхода функции безопасности Microsoft Defender.</td>
+            </tr>
+            <tr calss="even ">
+                <td class="fileslist prods" colspan="2">cpe:/a:microsoft:windows_defender</td>
+                <td class="desc fileslist">module_name=Defender, module_id={c46be3dc-30a9-452f-a5fd-4bf9ca87a854}, module_version=1.0, verb=Get, noun=MpComputerStatus, parameters=, select=AMProductVersion, value=4.18.2201.11</td>
+            </tr><tr >
+                <td class="bdu">BDU:2023-01374</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #F5770F; ' >Средний</div>
+                </td>
+                <td class="desc">Уязвимость несанкционированного получения прав Microsoft Windows Defender.</td>
+            </tr>
+            <tr calss=" ">
+                <td class="fileslist prods" colspan="2">cpe:/a:microsoft:windows_defender</td>
+                <td class="desc fileslist">C:\ProgramData\Microsoft\Windows Defender\Definition Updates\Default\MpEngine.dll (1.1.17300.4)<br/>C:\ProgramData\Microsoft\Windows Defender\Definition Updates\{BB7E4B88-2C05-4A1F-9380-3BEA3D09C5A1}\mpengine.dll (1.1.17300.4)</td>
+            </tr><tr even>
+                <td class="bdu">BDU:2024-04593</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #F5770F; ' >Средний</div>
+                </td>
+                <td class="desc">Уязвимость несанкционированного получения прав Visual Studio.</td>
+            </tr>
+            <tr calss="even ">
+                <td class="fileslist prods" colspan="2">cpe:/a:microsoft:visual_studio:2022</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall\283e9858!DisplayVersion:17.10.1</td>
+            </tr><tr >
+                <td class="bdu">BDU:2024-04595</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #F5770F; ' >Средний</div>
+                </td>
+                <td class="desc">Уязвимость удаленного выполнение кода в Visual Studio.</td>
+            </tr>
+            <tr calss=" ">
+                <td class="fileslist prods" colspan="2">cpe:/a:microsoft:visual_studio:2022</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall\283e9858!DisplayVersion:17.10.1</td>
+            </tr><tr even>
+                <td class="bdu">BDU:2022-03929</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #F5770F; ' >Средний</div>
+                </td>
+                <td class="desc">Графический драйвер NVIDIA содержит уязвимость в обработчике режима ядра (nvlddmkm.sys) для DxgkDdiEscape, что может привести к отказу в обслуживании.</td>
+            </tr>
+            <tr calss="even ">
+                <td class="fileslist prods" colspan="2">cpe:/a:nvidia:graphics_driver</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_Display.Driver!DisplayVersion:511.81</td>
+            </tr><tr >
+                <td class="bdu">BDU:2022-03958</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #F5770F; ' >Средний</div>
+                </td>
+                <td class="desc">Графический драйвер NVIDIA содержит уязвимость в обработчике режима ядра (nvlddmkm.sys) для DxgkDdiEscape, которая позволяет разыменование нулевого указателя и может привести к падению системы.</td>
+            </tr>
+            <tr calss=" ">
+                <td class="fileslist prods" colspan="2">cpe:/a:nvidia:graphics_driver</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_Display.Driver!DisplayVersion:511.81</td>
+            </tr><tr even>
+                <td class="bdu">BDU:2024-04094</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #00705C; ' >Низкий</div>
+                </td>
+                <td class="desc">Уязвимость в Git до 2.45.1, 2.44.1, 2.43.4, 2.42.2, 2.41.1, 2.40.2, и 2.39.4.</td>
+            </tr>
+            <tr calss="even ">
+                <td class="fileslist prods" colspan="2">cpe:/a:git_project:git</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\SOFTWARE\GitForWindows!CurrentVersion:2.43.0</td>
+            </tr><tr >
+                <td class="bdu">BDU:2024-04214</td>
+                <td class="risk riskTextColor">
+                    <div style='background-color: #00705C; ' >Низкий</div>
+                </td>
+                <td class="desc">Уязвимость в Git до версии 2.45.1, 2.44.1, 2.43.4, 2.42.2, 2.41.1, 2.40.2, и 2.39.4.</td>
+            </tr>
+            <tr calss=" ">
+                <td class="fileslist prods" colspan="2">cpe:/a:git_project:git</td>
+                <td class="desc fileslist">HKEY_LOCAL_MACHINE\SOFTWARE\GitForWindows!CurrentVersion:2.43.0</td>
+            </tr>
+            </table>
+        </div>
+
+        <div class="vulnerabilitiesList">
+            <div class="vulnListTitle">Список уязвимостей</div>
+            <br/>
+            <table class="vulnerabilitiesListTbl">
+                <tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #89171A;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Критический</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2021-00145</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость в Microsoft Malware Protection Engine до версии 1.1.17700.4 (BDU:2021-00145)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость удаленного выполнения кода в Microsoft Defender.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций:
+https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-1647</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2021-00145 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2021-00145" target="_blank">https://bdu.fstec.ru/vul/2021-00145</a></div><div class='ref_id'>CVE-2021-1647 (CVE)</div><div class='ref_ref'><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-1647" target="_blank">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-1647</a></div><div class='ref_id'>CVE-2021-1647 (Microsoft)</div><div class='ref_ref'><a href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2021-1647" target="_blank">https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2021-1647</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #89171A;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Критический</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2024-01322</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость удаленного выполнения кода Microsoft Outlook (BDU:2024-01322)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость удаленного выполнения кода Microsoft Outlook</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Установка обновлений из доверенных источников.
+В связи со сложившейся обстановкой и введенными санкциями против Российской Федерации рекомендуется устанавливать обновления программного обеспечения только после оценки всех сопутствующих рисков.
+
+Компенсиру</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2024-01322 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2024-01322" target="_blank">https://bdu.fstec.ru/vul/2024-01322</a></div><div class='ref_id'>CVE-2024-21413 (CVE)</div><div class='ref_ref'><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-21413" target="_blank">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-21413</a></div><div class='ref_id'>CVE-2024-21413 (Microsoft)</div><div class='ref_ref'><a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-21413" target="_blank">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-21413</a></div><div class='ref_id'>VULN-20240216.16 (NKCKI)</div><div class='ref_ref'><a href="https://safe-surf.ru/specialists/bulletins-nkcki/704838/" target="_blank">https://safe-surf.ru/specialists/bulletins-nkcki/704838/</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #89171A;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Критический</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2023-01390</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость обхода функции защиты Microsoft Defender for Endpoint Security (BDU:2023-01390)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость обхода функции защиты Microsoft Defender for Endpoint Security.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций производителя:
+https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21809</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2023-01390 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2023-01390" target="_blank">https://bdu.fstec.ru/vul/2023-01390</a></div><div class='ref_id'>CVE-2023-21809 (CVE)</div><div class='ref_ref'><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-21809" target="_blank">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-21809</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #89171A;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Критический</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2023-00658</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость в WireGuard 0.5.3 (BDU:2023-00658)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">WireGuard 0.5.3 не полностью учитывает возможность того, что злоумышленник может установить системное время жертвы на будущее значение, что позволяет привести к результату, в котором один статический закрытый ключ становится постоянно бесполезным.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций:
+https://lists.zx2c4.com/pipermail/wireguard/2021-August/006916.html
+
+Компенсирующие меры:
+1) Использование протокола синхронизации времени аналогичного NTP ( NTPSec, NTS, Chrony и др.)
+2) Использование значения счетчика равное </td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2023-00658 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2023-00658" target="_blank">https://bdu.fstec.ru/vul/2023-00658</a></div><div class='ref_id'>CVE-2021-46873 (CVE)</div><div class='ref_ref'><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-46873" target="_blank">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-46873</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #89171A;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Критический</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2024-04136</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость в LibreOffice версии 7.6 до 7.6.7, и 24.0 до 24.2.3 (BDU:2024-04136)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость в LibreOffice версии 7.6 до 7.6.7, и 24.0 до 24.2.3 позволяет злоумышленнику создать документ, который без запроса будет выполнять встроенные в LibreOffice скрипты при щелчке по графическому изображению.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Установка обновлений из доверенных источников.
+В связи со сложившейся обстановкой и введенными санкциями против Российской Федерации рекомендуется устанавливать обновления программного обеспечения только после оценки всех сопутствующих рисков.
+
+Компенсиру</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2024-04136 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2024-04136" target="_blank">https://bdu.fstec.ru/vul/2024-04136</a></div><div class='ref_id'>CVE-2024-3044 (CVE)</div><div class='ref_ref'><a href="https://www.libreoffice.org/about-us/security/advisories/CVE-2024-3044" target="_blank">https://www.libreoffice.org/about-us/security/advisories/CVE-2024-3044</a></div><div class='ref_id'>CVE-2024-3044 (LibreOffice)</div><div class='ref_ref'><a href="https://www.libreoffice.org/about-us/security/advisories/CVE-2024-3044" target="_blank">https://www.libreoffice.org/about-us/security/advisories/CVE-2024-3044</a></div><div class='ref_id'>VULN-20240517.43 (NKCKI)</div><div class='ref_ref'><a href="https://safe-surf.ru/specialists/bulletins-nkcki/707904/" target="_blank">https://safe-surf.ru/specialists/bulletins-nkcki/707904/</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #CC0000;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Высокий</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2024-01413</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость удаленного выполнения кода Microsoft Outlook (BDU:2024-01413)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость удаленного выполнения кода Microsoft Outlook</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций:
+https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-21378</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2024-01413 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2024-01413" target="_blank">https://bdu.fstec.ru/vul/2024-01413</a></div><div class='ref_id'>CVE-2024-21378 (CVE)</div><div class='ref_ref'><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-21378" target="_blank">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-21378</a></div><div class='ref_id'>CVE-2024-21378 (Microsoft)</div><div class='ref_ref'><a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-21378" target="_blank">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-21378</a></div><div class='ref_id'>VULN-20240216.17 (NKCKI)</div><div class='ref_ref'><a href="https://safe-surf.ru/specialists/bulletins-nkcki/704839/" target="_blank">https://safe-surf.ru/specialists/bulletins-nkcki/704839/</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #CC0000;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Высокий</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2024-04042</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость в Git (BDU:2024-04042)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость в Git до 2.45.1, 2.44.1, 2.43.4, 2.42.2, 2.41.1, 2.40.2, и 2.39.4.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций:
+
+Для Git:
+https://github.com/git/git/security/advisories/GHSA-vm9j-46j9-qvq4
+https://github.com/git/git/commit/7b70e9efb18c2cc3f219af399bd384c5801ba1d7
+
+Для программных продуктов Debian GNU/Linux:
+https://security-tracker.debia</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2024-04042 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2024-04042" target="_blank">https://bdu.fstec.ru/vul/2024-04042</a></div><div class='ref_id'>CVE-2024-32465 (CVE)</div><div class='ref_ref'><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-32465" target="_blank">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-32465</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #CC0000;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Высокий</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2021-04121</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость, связанная с повышением привилегий в Защитнике Microsoft Windows (BDU:2021-04121)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость, связанная с повышением привилегий в Защитнике Microsoft Windows.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций:
+https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34471</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2021-04121 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2021-04121" target="_blank">https://bdu.fstec.ru/vul/2021-04121</a></div><div class='ref_id'>CVE-2021-34471 (CVE)</div><div class='ref_ref'><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-34471" target="_blank">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-34471</a></div><div class='ref_id'>CVE-2021-34471 (Microsoft)</div><div class='ref_ref'><a href="https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2021-34471" target="_blank">https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2021-34471</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #CC0000;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Высокий</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2023-02200</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость отказа в обслуживании Microsoft Defender (BDU:2023-02200)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость отказа в обслуживании Microsoft Defender.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций производителя:
+https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24860</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2023-02200 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2023-02200" target="_blank">https://bdu.fstec.ru/vul/2023-02200</a></div><div class='ref_id'>CVE-2023-24860 (CVE)</div><div class='ref_ref'><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-24860" target="_blank">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-24860</a></div><div class='ref_id'>CVE-2023-24860 (Microsoft)</div><div class='ref_ref'><a href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2023-24860" target="_blank">https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2023-24860</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #CC0000;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Высокий</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2021-03065</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость в Microsoft Malware Protection Engine до 1.1.18200.3 (MpEngine-ASProtect-Embedded-Runtime-DLL-Memory-Corruption)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость удаленного выполнения кода в Microsoft Defender.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций:
+https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31985</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2021-03065 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2021-03065" target="_blank">https://bdu.fstec.ru/vul/2021-03065</a></div><div class='ref_id'>CVE-2021-31985 (CVE)</div><div class='ref_ref'><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-31985" target="_blank">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-31985</a></div><div class='ref_id'>CVE-2021-31985 (Microsoft)</div><div class='ref_ref'><a href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2021-31985" target="_blank">https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2021-31985</a></div><div class='ref_id'>MpEngine-ASProtect-Embedded-Runtime-DLL-Memory-Corruption (packetstormsecurity)</div><div class='ref_ref'><a href="https://packetstormsecurity.com/files/163443/MpEngine-ASProtect-Embedded-Runtime-DLL-Memory-Corruption.html" target="_blank">https://packetstormsecurity.com/files/163443/MpEngine-ASProtect-Embedded-Runtime-DLL-Memory-Corruption.html</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #CC0000;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Высокий</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2022-00643</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость удаленного выполнения кода Microsoft Defender (BDU:2022-00643)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость удаленного выполнения кода Microsoft Defender.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций производителя:
+https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2021-34522</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2022-00643 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2022-00643" target="_blank">https://bdu.fstec.ru/vul/2022-00643</a></div><div class='ref_id'>CVE-2021-34522 (CVE)</div><div class='ref_ref'><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-34522" target="_blank">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-34522</a></div><div class='ref_id'>CVE-2021-34522 (Microsoft)</div><div class='ref_ref'><a href="https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2021-34522" target="_blank">https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2021-34522</a></div><div class='ref_id'>VULN-20210716.8 (NKCKI)</div><div class='ref_ref'><a href="http://safe-surf.ru/upload/VULN/VULN-20210716.8.pdf" target="_blank">http://safe-surf.ru/upload/VULN/VULN-20210716.8.pdf</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #CC0000;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Высокий</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2024-04508</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость удаленного выполнение кода Microsoft Outlook (BDU:2024-04508)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость удаленного выполнение кода Microsoft Outlook.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Установка обновлений из доверенных источников.
+В связи со сложившейся обстановкой и введенными санкциями против Российской Федерации рекомендуется устанавливать обновления программного обеспечения только после оценки всех сопутствующих рисков.
+
+Компенсиру</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2024-04508 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2024-04508" target="_blank">https://bdu.fstec.ru/vul/2024-04508</a></div><div class='ref_id'>CVE-2024-30103 (CVE)</div><div class='ref_ref'><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-30103" target="_blank">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-30103</a></div><div class='ref_id'>CVE-2024-30103 (Microsoft)</div><div class='ref_ref'><a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-30103" target="_blank">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-30103</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #CC0000;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Высокий</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2024-01557</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость удаленного выполнения кода Microsoft Office OneNote (BDU:2024-01557)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость удаленного выполнения кода Microsoft Office OneNote</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций:
+https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-21384</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2024-01557 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2024-01557" target="_blank">https://bdu.fstec.ru/vul/2024-01557</a></div><div class='ref_id'>CVE-2024-21384 (CVE)</div><div class='ref_ref'><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-21384" target="_blank">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-21384</a></div><div class='ref_id'>CVE-2024-21384 (Microsoft)</div><div class='ref_ref'><a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-21384" target="_blank">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-21384</a></div><div class='ref_id'>VULN-20240216.79 (NKCKI)</div><div class='ref_ref'><a href="https://safe-surf.ru/specialists/bulletins-nkcki/704901/" target="_blank">https://safe-surf.ru/specialists/bulletins-nkcki/704901/</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #CC0000;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Высокий</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2022-02753</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость удаленного выполнения кода Microsoft Defender (BDU:2022-02753)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость удаленного выполнения кода Microsoft Defender. Этот CVE ID отличается от CVE-2021-34522.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций производителя:
+https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2021-34464</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2022-02753 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2022-02753" target="_blank">https://bdu.fstec.ru/vul/2022-02753</a></div><div class='ref_id'>CVE-2021-34464 (CVE)</div><div class='ref_ref'><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-34464" target="_blank">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-34464</a></div><div class='ref_id'>CVE-2021-34464 (Microsoft)</div><div class='ref_ref'><a href="https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2021-34464" target="_blank">https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2021-34464</a></div><div class='ref_id'>VULN-20210716.8 (NKCKI)</div><div class='ref_ref'><a href="https://safe-surf.ru/upload/VULN/VULN-20210716.8.pdf" target="_blank">https://safe-surf.ru/upload/VULN/VULN-20210716.8.pdf</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #CC0000;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Высокий</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2024-01556</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость удаленного выполнения кода Microsoft Word (BDU:2024-01556)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость удаленного выполнения кода Microsoft Word</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций:
+https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-21379</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2024-01556 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2024-01556" target="_blank">https://bdu.fstec.ru/vul/2024-01556</a></div><div class='ref_id'>CVE-2024-21379 (CVE)</div><div class='ref_ref'><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-21379" target="_blank">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-21379</a></div><div class='ref_id'>CVE-2024-21379 (Microsoft)</div><div class='ref_ref'><a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-21379" target="_blank">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-21379</a></div><div class='ref_id'>VULN-20240216.81 (NKCKI)</div><div class='ref_ref'><a href="https://safe-surf.ru/specialists/bulletins-nkcki/704903/" target="_blank">https://safe-surf.ru/specialists/bulletins-nkcki/704903/</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #CC0000;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Высокий</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2024-04053</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость удаленного выполнение кода в Microsoft Excel (BDU:2024-04053)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость удаленного выполнение кода в Microsoft Excel.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций производителя:
+https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-30042</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2024-04053 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2024-04053" target="_blank">https://bdu.fstec.ru/vul/2024-04053</a></div><div class='ref_id'>CVE-2024-30042 (CVE)</div><div class='ref_ref'><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-30042" target="_blank">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-30042</a></div><div class='ref_id'>CVE-2024-30042 (Microsoft)</div><div class='ref_ref'><a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-30042" target="_blank">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-30042</a></div><div class='ref_id'>VULN-20240517.44 (NKCKI)</div><div class='ref_ref'><a href="https://safe-surf.ru/specialists/bulletins-nkcki/707905/" target="_blank">https://safe-surf.ru/specialists/bulletins-nkcki/707905/</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #CC0000;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Высокий</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2024-03872</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость в Git (BDU:2024-03872)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость в Git до версии 2.45.1, 2.44.1, 2.43.4, 2.42.2, 2.41.1, 2.40.2, и 2.39.4.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Установка обновлений из доверенных источников.
+В связи со сложившейся обстановкой и введенными санкциями против Российской Федерации рекомендуется устанавливать обновления программного обеспечения только после оценки всех сопутствующих рисков.
+
+Компенсиру</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2024-03872 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2024-03872" target="_blank">https://bdu.fstec.ru/vul/2024-03872</a></div><div class='ref_id'>CVE-2024-32002 (CVE)</div><div class='ref_ref'><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-32002" target="_blank">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-32002</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #CC0000;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Высокий</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2022-03110</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость в Графическом драйвере NVIDIA R450, R470, и R510 (5353)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Графический драйвер NVIDIA содержит уязвимость в DirectX11 user mode driver (nvwgf2um/x.dll), что может привести к выполнению кода, вызвать отказ в обслуживании, повышению привилегий, раскрытию информации.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Установка обновлений из доверенных источников.
+В связи со сложившейся обстановкой и введенными санкциями против Российской Федерации рекомендуется устанавливать обновления программного обеспечения только после оценки всех сопутствующих рисков.
+
+1. Компенс</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2022-03110 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2022-03110" target="_blank">https://bdu.fstec.ru/vul/2022-03110</a></div><div class='ref_id'>CVE-2022-28182 (CVE)</div><div class='ref_ref'><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-28182" target="_blank">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-28182</a></div><div class='ref_id'>5353 (NVIDIA)</div><div class='ref_ref'><a href="https://nvidia.custhelp.com/app/answers/detail/a_id/5353" target="_blank">https://nvidia.custhelp.com/app/answers/detail/a_id/5353</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #CC0000;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Высокий</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2023-05606</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость обхода функции безопасности Microsoft Defender (BDU:2023-05606)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость обхода функции безопасности Microsoft Defender.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций производителя:
+https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-38163</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2023-05606 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2023-05606" target="_blank">https://bdu.fstec.ru/vul/2023-05606</a></div><div class='ref_id'>CVE-2023-38163 (CVE)</div><div class='ref_ref'><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-38163" target="_blank">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-38163</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #CC0000;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Высокий</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2022-03426</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость отказа в обслуживании Microsoft Defender (BDU:2022-03426)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость отказа в обслуживании Microsoft Defender.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций производителя:
+https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2022-24548</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2022-03426 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2022-03426" target="_blank">https://bdu.fstec.ru/vul/2022-03426</a></div><div class='ref_id'>CVE-2022-24548 (CVE)</div><div class='ref_ref'><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-24548" target="_blank">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-24548</a></div><div class='ref_id'>CVE-2022-24548 (Microsoft)</div><div class='ref_ref'><a href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2022-24548" target="_blank">https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2022-24548</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #CC0000;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Высокий</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2022-03060</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость в Графическом драйвере NVIDIA R450, R470, и R510 (5353)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Графический драйвер NVIDIA содержит уязвимость в обработчике режима ядра, что может привести к выполнению кода, отказу в обслуживании, повышению привилегий, раскрытию информации.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Установка обновлений из доверенных источников.
+В связи со сложившейся обстановкой и введенными санкциями против Российской Федерации рекомендуется устанавливать обновления программного обеспечения только после оценки всех сопутствующих рисков.
+
+Компенсиру</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2022-03060 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2022-03060" target="_blank">https://bdu.fstec.ru/vul/2022-03060</a></div><div class='ref_id'>CVE-2022-28181 (CVE)</div><div class='ref_ref'><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-28181" target="_blank">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-28181</a></div><div class='ref_id'>5353 (NVIDIA)</div><div class='ref_ref'><a href="https://nvidia.custhelp.com/app/answers/detail/a_id/5353" target="_blank">https://nvidia.custhelp.com/app/answers/detail/a_id/5353</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #CC0000;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Высокий</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2022-01339</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость WinVerifyTrust, связанная с проверкой подписи (MS13-098)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">С тем, как функция WinVerifyTrust обрабатывает проверку подписи Authenticode в Windows для переносимых исполняемых (PE) файлов, связано существование уязвимости, делающей возможным удаленное выполнение кода. Анонимный злоумышленник может воспользоваться этой уязвимостью, изменив существующий подписанный переносимый исполняемый (PE) файл для обработки непроверенных частей файла. В результате в файл может быть добавлен вредоносный код без нарушения подлинности подписи. Воспользовавшись этой уязвимостью, злоумышленник может установить полный контроль над системой. После этого злоумышленник сможет устанавливать программы, просматривать, изменять и уничтожать данные или создавать новые учетные записи с неограниченными правами.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций производителя:
+https://msrc.microsoft.com/update-guide/vulnerability/CVE-2013-3900</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2022-01339 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2022-01339" target="_blank">https://bdu.fstec.ru/vul/2022-01339</a></div><div class='ref_id'>CVE-2013-3900 (CVE)</div><div class='ref_ref'><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-3900" target="_blank">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-3900</a></div><div class='ref_id'>MS13-098 (Microsoft)</div><div class='ref_ref'><a href="http://technet.microsoft.com/ru-ru/security/bulletin/ms13-098" target="_blank">http://technet.microsoft.com/ru-ru/security/bulletin/ms13-098</a></div><div class='ref_id'>CVE-2013-3900 (Microsoft)</div><div class='ref_ref'><a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2013-3900" target="_blank">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2013-3900</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #CC0000;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Высокий</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2024-01478</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость удаленного выполнения кода Microsoft Office (BDU:2024-01478)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость удаленного выполнения кода Microsoft Office</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций производителя:
+https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-20673</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2024-01478 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2024-01478" target="_blank">https://bdu.fstec.ru/vul/2024-01478</a></div><div class='ref_id'>CVE-2024-20673 (CVE)</div><div class='ref_ref'><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-20673" target="_blank">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-20673</a></div><div class='ref_id'>CVE-2024-20673 (Microsoft)</div><div class='ref_ref'><a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-20673" target="_blank">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-20673</a></div><div class='ref_id'>VULN-20240216.80 (NKCKI)</div><div class='ref_ref'><a href="https://safe-surf.ru/specialists/bulletins-nkcki/704902/" target="_blank">https://safe-surf.ru/specialists/bulletins-nkcki/704902/</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #F5770F;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Средний</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2023-06987</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость в WireGuard 0.5.3 (BDU:2023-06987)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость в WireGuard 0.5.3 позволяет злоумышленнику обманом заставить жертву блокировать трафик в локальную сеть даже при включенном VPN.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Компенсирующие меры:
+- отключение разрешений на доступ к локальной сети, либо опции «пропускать локальный трафик без VPN»;
+- использование средств межсетевого экранирования с внедрением механизма «белых» списков IP-адресов;
+- использование инструментов за</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2023-06987 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2023-06987" target="_blank">https://bdu.fstec.ru/vul/2023-06987</a></div><div class='ref_id'>CVE-2023-35838 (CVE)</div><div class='ref_ref'><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-35838" target="_blank">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-35838</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #F5770F;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Средний</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2024-04608</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость в WiX (BDU:2024-04608)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость перехвата бинарных файлов в WiX.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций:
+https://github.com/wixtoolset/issues/security/advisories/GHSA-rf39-3f98-xr7r</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2024-04608 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2024-04608" target="_blank">https://bdu.fstec.ru/vul/2024-04608</a></div><div class='ref_id'>CVE-2024-29187 (CVE)</div><div class='ref_ref'><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-29187" target="_blank">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-29187</a></div><div class='ref_id'>CVE-2024-29187 (Microsoft)</div><div class='ref_ref'><a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-29187" target="_blank">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-29187</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #F5770F;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Средний</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2024-04093</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость в Git (BDU:2024-04093)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость в Git до версии 2.45.1, 2.44.1, 2.43.4, 2.42.2, 2.41.1, 2.40.2, и 2.39.4.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций:
+
+Для Git:
+https://github.com/git/git/security/advisories/GHSA-xfc6-vwr8-r389
+https://github.com/git/git/commit/f4aa8c8bb11dae6e769cd930565173808cbb69c8
+
+Для Debian GNU/Linux:
+https://security-tracker.debian.org/tracker/CVE-2024</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2024-04093 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2024-04093" target="_blank">https://bdu.fstec.ru/vul/2024-04093</a></div><div class='ref_id'>CVE-2024-32004 (CVE)</div><div class='ref_ref'><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-32004" target="_blank">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-32004</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #F5770F;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Средний</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2022-07001</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость повышения привилегий защитника Microsoft Windows (BDU:2022-07001)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость повышения привилегий защитника Microsoft Windows.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций:
+https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2022-37971</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2022-07001 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2022-07001" target="_blank">https://bdu.fstec.ru/vul/2022-07001</a></div><div class='ref_id'>CVE-2022-37971 (CVE)</div><div class='ref_ref'><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-37971" target="_blank">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-37971</a></div><div class='ref_id'>CVE-2022-37971 (Microsoft)</div><div class='ref_ref'><a href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2022-37971" target="_blank">https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2022-37971</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #F5770F;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Средний</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2024-03125</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость в Node.js 18.x до 18.20.1, 20.x до 20.12.1, и 21.x до 21.7.2 (BDU:2024-03125)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Проникновение HTTP-запроса (HRS) в Node.js 18.x до 18.20.1, 20.x до 20.12.1, и 21.x до 21.7.2.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций:
+Для Node.js:
+https://nodejs.org/en/blog/vulnerability/april-2024-security-releases
+
+Для Debian GNU/Linux:
+https://security-tracker.debian.org/tracker/CVE-2024-27982
+
+Для продуктов Novell Inc.:
+https://www.suse.com/security/cve/</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2024-03125 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2024-03125" target="_blank">https://bdu.fstec.ru/vul/2024-03125</a></div><div class='ref_id'>CVE-2024-27982 (CVE)</div><div class='ref_ref'><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-27982" target="_blank">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-27982</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #F5770F;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Средний</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2016-00218</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость обхода ASLR в Internet Explorer и Edge Browser (MS15-124, MS15-125)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Microsoft Internet Explorer 7 по 11 и Microsoft Edge позволяет удалённым злоумышленникам обойти защитный ASLR механизм через специально сформированный веб-сайт.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Установка обновления в соответствии с информацией, содержащейся в уведомлениях безопасности MS15-124 и MS15-125</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2016-00218 (FSTEC)</div><div class='ref_ref'><a href="http://www.bdu.fstec.ru/vul/2016-00218" target="_blank">http://www.bdu.fstec.ru/vul/2016-00218</a></div><div class='ref_id'>CVE-2015-6161 (CVE)</div><div class='ref_ref'><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-6161" target="_blank">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-6161</a></div><div class='ref_id'>MS15-124 (Microsoft)</div><div class='ref_ref'><a href="http://technet.microsoft.com/security/bulletin/MS15-124" target="_blank">http://technet.microsoft.com/security/bulletin/MS15-124</a></div><div class='ref_id'>MS15-125 (Microsoft)</div><div class='ref_ref'><a href="https://technet.microsoft.com/ru-ru/library/security/ms15-125" target="_blank">https://technet.microsoft.com/ru-ru/library/security/ms15-125</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #F5770F;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Средний</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2022-03959</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость в Графическом драйвере NVIDIA R450, R470, и R510 (5353)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Графический драйвер NVIDIA содержит уязвимость в обработчике режима ядра (nvlddmkm.sys) для DxgkDdiEscape, которая может привести к отказу в обслуживании.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций:
+https://nvidia.custhelp.com/app/answers/detail/a_id/5353</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2022-03959 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2022-03959" target="_blank">https://bdu.fstec.ru/vul/2022-03959</a></div><div class='ref_id'>CVE-2022-28188 (CVE)</div><div class='ref_ref'><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-28188" target="_blank">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-28188</a></div><div class='ref_id'>5353 (NVIDIA)</div><div class='ref_ref'><a href="https://nvidia.custhelp.com/app/answers/detail/a_id/5353" target="_blank">https://nvidia.custhelp.com/app/answers/detail/a_id/5353</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #F5770F;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Средний</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2023-02445</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость отказа в обслуживании в pip пакете setuptools до 65.5.1 (BDU:2023-02445)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость отказа в обслуживании в pip пакете setuptools до 65.5.1.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций:
+Для Python:
+https://github.com/pypa/setuptools/commit/43a9c9bfa6aa626ec2a22540bea28d2ca77964be
+
+Для РедОС: 
+http://repo.red-soft.ru/redos/7.3c/x86_64/updates/
+
+Для Fedora:
+https://lists.fedoraproject.org/archives/list/package-a</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2023-02445 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2023-02445" target="_blank">https://bdu.fstec.ru/vul/2023-02445</a></div><div class='ref_id'>CVE-2022-40897 (CVE)</div><div class='ref_ref'><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-40897" target="_blank">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-40897</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #F5770F;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Средний</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2021-05768</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость удаленного выполнения кода в Microsoft Defender (BDU:2021-05768)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость удаленного выполнения кода в Microsoft Defender.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций:
+https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-42298</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2021-05768 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2021-05768" target="_blank">https://bdu.fstec.ru/vul/2021-05768</a></div><div class='ref_id'>CVE-2021-42298 (CVE)</div><div class='ref_ref'><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-42298" target="_blank">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-42298</a></div><div class='ref_id'>CVE-2021-42298 (Microsoft)</div><div class='ref_ref'><a href="https://msrc.microsoft.com/update-guide/en-us/vulnerability/CVE-2021-42298" target="_blank">https://msrc.microsoft.com/update-guide/en-us/vulnerability/CVE-2021-42298</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #F5770F;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Средний</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2022-03932</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость в Графическом драйвере NVIDIA R450, R470, и R510 (5353)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Графический драйвер NVIDIA содержит уязвимость в обработчике режима ядра (nvlddmkm.sys), что может привести к отказу в обслуживании.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций:
+https://nvidia.custhelp.com/app/answers/detail/a_id/5353</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2022-03932 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2022-03932" target="_blank">https://bdu.fstec.ru/vul/2022-03932</a></div><div class='ref_id'>CVE-2022-28187 (CVE)</div><div class='ref_ref'><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-28187" target="_blank">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-28187</a></div><div class='ref_id'>5353 (NVIDIA)</div><div class='ref_ref'><a href="https://nvidia.custhelp.com/app/answers/detail/a_id/5353" target="_blank">https://nvidia.custhelp.com/app/answers/detail/a_id/5353</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #F5770F;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Средний</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2022-03930</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость в Графическом драйвере NVIDIA R450, R470, и R510 (5353)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Графический драйвер NVIDIA содержит уязвимость в ECC, что может привести к отказу в обслуживании.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций:
+
+Для NVIDIA GPU Display Driver:
+https://nvidia.custhelp.com/app/answers/detail/a_id/5353
+
+Для Debian GNU/Linux:
+https://security-tracker.debian.org/tracker/CVE-2022-28185</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2022-03930 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2022-03930" target="_blank">https://bdu.fstec.ru/vul/2022-03930</a></div><div class='ref_id'>CVE-2022-28185 (CVE)</div><div class='ref_ref'><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-28185" target="_blank">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-28185</a></div><div class='ref_id'>5353 (NVIDIA)</div><div class='ref_ref'><a href="https://nvidia.custhelp.com/app/answers/detail/a_id/5353" target="_blank">https://nvidia.custhelp.com/app/answers/detail/a_id/5353</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #F5770F;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Средний</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2021-03061</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость в Microsoft Malware Protection Engine до 1.1.18200.3 (BDU:2021-03061)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость, приводящая к отказу в обслуживании Microsoft Defender.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций:
+https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2021-31978</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2021-03061 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2021-03061" target="_blank">https://bdu.fstec.ru/vul/2021-03061</a></div><div class='ref_id'>CVE-2021-31978 (CVE)</div><div class='ref_ref'><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-31978" target="_blank">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-31978</a></div><div class='ref_id'>CVE-2021-31978 (Microsoft)</div><div class='ref_ref'><a href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2021-31978" target="_blank">https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2021-31978</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #F5770F;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Средний</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2022-03939</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость в Графическом драйвере NVIDIA R450, R470, и R510 (5353)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Графический драйвер NVIDIA содержит уязвимость в обработчике режима ядра (nvlddmkm.sys) для DxgkDdiEscape, которая позволяет вызвать отказ в обслуживании.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций:
+https://nvidia.custhelp.com/app/answers/detail/a_id/5353</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2022-03939 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2022-03939" target="_blank">https://bdu.fstec.ru/vul/2022-03939</a></div><div class='ref_id'>CVE-2022-28190 (CVE)</div><div class='ref_ref'><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-28190" target="_blank">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-28190</a></div><div class='ref_id'>5353 (NVIDIA)</div><div class='ref_ref'><a href="https://nvidia.custhelp.com/app/answers/detail/a_id/5353" target="_blank">https://nvidia.custhelp.com/app/answers/detail/a_id/5353</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #F5770F;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Средний</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2024-00145</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость повышения привилегий в Microsoft Windows Defender (BDU:2024-00145)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость повышения привилегий в Microsoft Windows Defender.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций производителя:
+https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-36422</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2024-00145 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2024-00145" target="_blank">https://bdu.fstec.ru/vul/2024-00145</a></div><div class='ref_id'>CVE-2023-36422 (CVE)</div><div class='ref_ref'><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-36422" target="_blank">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-36422</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #F5770F;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Средний</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2023-03310</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость проверки входных данных в pip пакете pip до 21.1 (BDU:2023-03310)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость проверки входных данных в pip пакете pip до 21.1.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций:
+
+Для Python-pip:
+https://github.com/pypa/pip/commit/e46bdda9711392fec0c45c1175bae6db847cb30b
+
+Для программных продуктов Oracle Corp.:
+https://www.oracle.com/security-alerts/cpuapr2022.html	  
+https://www.oracle.com/security-ale</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2023-03310 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2023-03310" target="_blank">https://bdu.fstec.ru/vul/2023-03310</a></div><div class='ref_id'>CVE-2021-3572 (CVE)</div><div class='ref_ref'><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-3572" target="_blank">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-3572</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #F5770F;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Средний</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2022-03126</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость в Графическом драйвере NVIDIA R450, R470, и R510 (5353)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Графический драйвер NVIDIA содержит уязвимость в обработчике режима ядра, что может привести к отказу в обслуживании и раскрытию информации.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций:
+
+Для NVIDIA GPU Display Driver:
+https://nvidia.custhelp.com/app/answers/detail/a_id/5353
+
+Для Debian GNU/Linux:
+https://security-tracker.debian.org/tracker/CVE-2022-28183</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2022-03126 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2022-03126" target="_blank">https://bdu.fstec.ru/vul/2022-03126</a></div><div class='ref_id'>CVE-2022-28183 (CVE)</div><div class='ref_ref'><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-28183" target="_blank">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-28183</a></div><div class='ref_id'>5353 (NVIDIA)</div><div class='ref_ref'><a href="https://nvidia.custhelp.com/app/answers/detail/a_id/5353" target="_blank">https://nvidia.custhelp.com/app/answers/detail/a_id/5353</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #F5770F;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Средний</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2022-03941</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость в Графическом драйвере NVIDIA R450, R470, и R510 (5353)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Графический драйвер NVIDIA содержит уязвимость в обработчике режима ядра (nvlddmkm.sys) для DxgkDdiEscape, что может привести к отказу в обслуживании и раскрытию информации.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций:
+
+Для NVIDIA GPU Display Driver:
+https://nvidia.custhelp.com/app/answers/detail/a_id/5353
+
+Для Debian GNU/Linux:
+https://security-tracker.debian.org/tracker/CVE-2022-28184</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2022-03941 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2022-03941" target="_blank">https://bdu.fstec.ru/vul/2022-03941</a></div><div class='ref_id'>CVE-2022-28184 (CVE)</div><div class='ref_ref'><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-28184" target="_blank">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-28184</a></div><div class='ref_id'>5353 (NVIDIA)</div><div class='ref_ref'><a href="https://nvidia.custhelp.com/app/answers/detail/a_id/5353" target="_blank">https://nvidia.custhelp.com/app/answers/detail/a_id/5353</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #F5770F;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Средний</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2023-08026</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость ввода команд в pip пакете pip до 23.3 (BDU:2023-08026)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость ввода команд в pip пакете pip до 23.3.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций:
+https://github.com/pypa/pip/pull/12306/commits/389cb799d0da9a840749fcd14878928467ed49b4</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2023-08026 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2023-08026" target="_blank">https://bdu.fstec.ru/vul/2023-08026</a></div><div class='ref_id'>CVE-2023-5752 (CVE)</div><div class='ref_ref'><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-5752" target="_blank">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-5752</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #F5770F;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Средний</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2023-02598</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость обхода функции безопасности Microsoft Defender (BDU:2023-02598)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость обхода функции безопасности Microsoft Defender.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций производителя: 
+https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24934</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2023-02598 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2023-02598" target="_blank">https://bdu.fstec.ru/vul/2023-02598</a></div><div class='ref_id'>CVE-2023-24934 (CVE)</div><div class='ref_ref'><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-24934" target="_blank">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-24934</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #F5770F;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Средний</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2023-01374</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость несанкционированного получения прав Microsoft Windows Defender (BDU:2023-01374)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость несанкционированного получения прав Microsoft Windows Defender.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций производителя:
+https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23389</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2023-01374 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2023-01374" target="_blank">https://bdu.fstec.ru/vul/2023-01374</a></div><div class='ref_id'>CVE-2023-23389 (CVE)</div><div class='ref_ref'><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-23389" target="_blank">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-23389</a></div><div class='ref_id'>CVE-2023-23389 (Microsoft)</div><div class='ref_ref'><a href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2023-23389" target="_blank">https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2023-23389</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #F5770F;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Средний</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2024-04593</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость несанкционированного получения прав Visual Studio (BDU:2024-04593)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость несанкционированного получения прав Visual Studio.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций производителя:
+https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-29060</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2024-04593 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2024-04593" target="_blank">https://bdu.fstec.ru/vul/2024-04593</a></div><div class='ref_id'>CVE-2024-29060 (CVE)</div><div class='ref_ref'><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-29060" target="_blank">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-29060</a></div><div class='ref_id'>CVE-2024-29060 (Microsoft)</div><div class='ref_ref'><a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-29060" target="_blank">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-29060</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #F5770F;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Средний</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2024-04595</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость удаленного выполнение кода в Visual Studio (BDU:2024-04595)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость удаленного выполнение кода в Visual Studio.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций производителя:
+https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-30052</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2024-04595 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2024-04595" target="_blank">https://bdu.fstec.ru/vul/2024-04595</a></div><div class='ref_id'>CVE-2024-30052 (CVE)</div><div class='ref_ref'><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-30052" target="_blank">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-30052</a></div><div class='ref_id'>CVE-2024-30052 (Microsoft)</div><div class='ref_ref'><a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-30052" target="_blank">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-30052</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #F5770F;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Средний</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2022-03929</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость в Графическом драйвере NVIDIA R450, R470, и R510 (5353)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Графический драйвер NVIDIA содержит уязвимость в обработчике режима ядра (nvlddmkm.sys) для DxgkDdiEscape, что может привести к отказу в обслуживании.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций:
+https://nvidia.custhelp.com/app/answers/detail/a_id/5353</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2022-03929 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2022-03929" target="_blank">https://bdu.fstec.ru/vul/2022-03929</a></div><div class='ref_id'>CVE-2022-28186 (CVE)</div><div class='ref_ref'><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-28186" target="_blank">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-28186</a></div><div class='ref_id'>5353 (NVIDIA)</div><div class='ref_ref'><a href="https://nvidia.custhelp.com/app/answers/detail/a_id/5353" target="_blank">https://nvidia.custhelp.com/app/answers/detail/a_id/5353</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #F5770F;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Средний</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2022-03958</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость в Графическом драйвере NVIDIA R450, R470, и R510 (5353)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Графический драйвер NVIDIA содержит уязвимость в обработчике режима ядра (nvlddmkm.sys) для DxgkDdiEscape, которая позволяет разыменование нулевого указателя и может привести к падению системы.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций:
+https://nvidia.custhelp.com/app/answers/detail/a_id/5353</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2022-03958 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2022-03958" target="_blank">https://bdu.fstec.ru/vul/2022-03958</a></div><div class='ref_id'>CVE-2022-28189 (CVE)</div><div class='ref_ref'><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-28189" target="_blank">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-28189</a></div><div class='ref_id'>5353 (NVIDIA)</div><div class='ref_ref'><a href="https://nvidia.custhelp.com/app/answers/detail/a_id/5353" target="_blank">https://nvidia.custhelp.com/app/answers/detail/a_id/5353</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #00705C;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Низкий</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2024-04094</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость в Git (BDU:2024-04094)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость в Git до 2.45.1, 2.44.1, 2.43.4, 2.42.2, 2.41.1, 2.40.2, и 2.39.4.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Использование рекомендаций:
+
+Для Git:
+https://github.com/git/git/security/advisories/GHSA-mvxm-9j2h-qjx7
+
+Для Debian GNU/Linux:
+https://security-tracker.debian.org/tracker/CVE-2024-32021
+
+Для программных продуктов Novell Inc.:
+https://www.suse.com/securit</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2024-04094 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2024-04094" target="_blank">https://bdu.fstec.ru/vul/2024-04094</a></div><div class='ref_id'>CVE-2024-32021 (CVE)</div><div class='ref_ref'><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-32021" target="_blank">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-32021</a></div></td>
+                </tr><tr>
+                    <td class=" font8pt vulnerab key vulnerabTC" style='background-color: #00705C;'>Уязвимость</td>
+                    <td class=" font8pt valueMargin">Уровень опасности: Низкий</td>
+                </tr>
+                <tr>
+                    <td class="font10pt title key">BDU:2024-04214</td>
+                   <td class="font10pt bold value valueMargin">Уязвимость в Git (BDU:2024-04214)</td>
+                </tr>
+                <tr>
+                    <td class="title key">Описание уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Уязвимость в Git до версии 2.45.1, 2.44.1, 2.43.4, 2.42.2, 2.41.1, 2.40.2, и 2.39.4.</td>
+                </tr>
+                <tr>
+                    <td class="title key">Возможные меры по устранению уязвимости</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Для Git:
+https://github.com/git/git/security/advisories/GHSA-5rfh-556j-fhgj
+
+Для РедОС: http://repo.red-soft.ru/redos/7.3c/x86_64/updates/</td>
+                </tr>
+                <tr>
+                    <td class="title key">Ссылки на источники</td>
+                    <td class="valueMargin"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style='padding-bottom: 30px;'><div class='ref_id'>BDU:2024-04214 (FSTEC)</div><div class='ref_ref'><a href="https://bdu.fstec.ru/vul/2024-04214" target="_blank">https://bdu.fstec.ru/vul/2024-04214</a></div><div class='ref_id'>CVE-2024-32020 (CVE)</div><div class='ref_ref'><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-32020" target="_blank">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-32020</a></div></td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="footer">
+            <hr style="height: 3px; size: 3px; border: 0; background-color: #eff4fb" />
+            <div>Программа осуществляет поиск уязвимостей только по выбранному Вами множеству определений. Отчеты программы не могут являться объективной оценкой защищенности сканируемого компьютера.</div>
+            <div>Конец отчета. ScanOVAL 1.5.0 (build 55)</div>
+            <div>ScanOVAL: 0cb33045-0f79-4c7a-81dc-02f46287968a.</div>
+            <hr style="height: 1px; size: 1px; border: 0; background-color: #b4b4b4" />
+            <div style="font-family: Arial Narrow; font-size: 9.75pt; color: #b4b4b4; text-align: right;">
+                1
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
