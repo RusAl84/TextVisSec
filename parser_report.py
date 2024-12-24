@@ -33,8 +33,10 @@ if __name__ == '__main__':
     file = "ScanOval_a.html"
     data = get_data(file)
     # print(data)
-    with open("data.txt", "w", encoding="UTF8") as file:
+    with open("bdu.txt", "w+", encoding="UTF8") as bdu_file:
         for item in data:
-            file.write(f"bdu:{item['bdu']}  desc:{item['desc']}")
+            desc = item['desc']
+            desc = desc.replace('\t', '').replace('\n', '').replace('\r', '')
+            bdu_file.write(f"{item['bdu']}\t{desc}\n")
     # for item in data:
     #     print(f"bdu:{item['bdu']}  desc:{item['desc']}")
