@@ -36,15 +36,16 @@ def send_photo(path):
 @app.route("/textVis", methods=['POST'])
 def textVis():
     pass
-    import textVisLib
-    textVisLib.save_data()
-    out_data={}
+    import 02_textVisLib as tv
+    tv.save_data()
+    out_data = {}
     out_data['a1'] = "http://localhost:5000/uploads/TFD_risk.png"
     out_data['a2'] = "http://localhost:5000/uploads/tSNE_SVD_risk.png"
     out_data['a3'] = "http://localhost:5000/uploads/umap_CV_risk.png"
     out_data['a4'] = "http://localhost:5000/uploads/tSNE_SVD_bdu.png"
     out_data['a5'] = "http://localhost:5000/uploads/umap_CV_bdu.png"
     return out_data
+
 
 @app.route("/clear_db", methods=['GET'])
 def clear_db():

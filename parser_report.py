@@ -38,5 +38,10 @@ if __name__ == '__main__':
             desc = item['desc']
             desc = desc.replace('\t', '').replace('\n', '').replace('\r', '')
             bdu_file.write(f"{item['bdu']}\t{desc}\n")
+    with open("risk.txt", "w+", encoding="UTF8") as risk_file:
+        for item in data:
+            desc = item['desc']
+            desc = desc.replace('\t', '').replace('\n', '').replace('\r', '')
+            risk_file.write(f"{item['risk']}\t{desc}\n")
     # for item in data:
     #     print(f"bdu:{item['bdu']}  desc:{item['desc']}")
