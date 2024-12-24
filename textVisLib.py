@@ -38,7 +38,7 @@ def TokenFrequencyDistribution(y, text, fName):
 
     freq_dist_viz.show()
 
-    # freq_dist_viz.save(fName)
+    freq_dist_viz.savefig(fName)
 
     # from yellowbrick.text import freqdist
 
