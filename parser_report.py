@@ -29,7 +29,7 @@ def get_data(file):
 
 
 if __name__ == '__main__':
-    file="ScanOval_Report.html"
+    file="ScanOval_a.html"
     data = get_data(file)
     print(data)
     
