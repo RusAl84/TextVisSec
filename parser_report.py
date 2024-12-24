@@ -2,6 +2,7 @@
 import requests
 import json
 
+
 def get_data(file):
     with open(file, encoding="UTF-8") as f:
         page = f.read()
@@ -10,28 +11,30 @@ def get_data(file):
     trs = soup.find_all("tr")
     data = []
     for tr in trs:
-        tr =BeautifulSoup(str(tr), "html.parser")
+        tr = BeautifulSoup(str(tr), "html.parser")
         bdu = tr.find_all("td", {"class": "bdu"})
         if len(bdu) > 0:
             desc = tr.find_all("td", {"class": "desc"})
             risk = tr.find_all("td", {"class": "risk"})
-            print(f"bdu: {bdu[0].text}  desc: {desc[0].text} risk:{risk[0].text}\n")
-            line={}
-            line['bdu']=bdu[0].text.strip()
-            line['desc']=desc[0].text.strip()
-            line['risk']=risk[0].text.strip()
+            print(
+                f"bdu: {bdu[0].text}  desc: {desc[0].text} risk:{risk[0].text}\n")
+            line = {}
+            line['bdu'] = bdu[0].text.strip()
+            line['desc'] = desc[0].text.strip()
+            line['risk'] = risk[0].text.strip()
             data.append(line)
     jsonstring = json.dumps(data, ensure_ascii=False)
     with open("report_data.json", "w", encoding="UTF8") as file:
         file.write(jsonstring)
-    return data 
-
+    return data
 
 
 if __name__ == '__main__':
-    file="ScanOval_a.html"
+    file = "ScanOval_a.html"
     data = get_data(file)
-    print(data)
-    
+    # print(data)
+    with open("data.txt", "w", encoding="UTF8") as file:
+        for item in data:
+            file.write(f"bdu:{item['bdu']}  desc:{item['desc']}")
     # for item in data:
     #     print(f"bdu:{item['bdu']}  desc:{item['desc']}")
