@@ -3,8 +3,8 @@ import requests
 import json
 
 
-def get_data(file):
-    with open(file, encoding="UTF-8") as f:
+def get_data(filename):
+    with open(filename, encoding="UTF-8") as f:
         page = f.read()
     soup = BeautifulSoup(page, "html.parser")
 
@@ -30,8 +30,8 @@ def get_data(file):
 
 
 if __name__ == '__main__':
-    file = "ScanOval_a.html"
-    data = get_data(file)
+    filename = "d://ScanOval_s.html"
+    data = get_data(filename)
     # print(data)
     with open("bdu.txt", "w+", encoding="UTF8") as bdu_file:
         for item in data:
